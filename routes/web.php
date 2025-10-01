@@ -6,6 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ketua', function () {
-    return view('selesai');
+Route::get('/anggota', function () {
+    return view('anggota');
 });
+
