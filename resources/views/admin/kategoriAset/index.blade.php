@@ -17,7 +17,6 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
@@ -359,6 +358,20 @@
             </div>
         </div>
 
+        @if (session('update'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ session('update') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif
+
+@if (session('delete'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session('delete') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+@endif
+
         <div class="row">
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow mb-4">
@@ -370,7 +383,8 @@
                                         <th class="border-0">nama</th>
                                         <th class="border-0">kode</th>
                                         <th class="border-0">deskripsi</th>
-                                        <th class="border-0 rounded-end">Action</th>
+                                        <th class="border-0 text-center">Action </th>
+                                        <th class="border-0"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -380,7 +394,7 @@
                                             <td>{{ $item->kode }}</td>
                                             <td>{{ $item->deskripsi }}</td>
                                             <td><a href="{{route('kategoriAset.edit', $item->kategori_id)}}" class="btn btn-info btn-sm">
-                                                    <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
+                                            <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
                                                         stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
                                                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -388,7 +402,14 @@
                                                         </path>
                                                     </svg>
                                                     Edit
-                                                </a></td>
+                                                </a>
+                                                <td> <form action="{{ route('kategoriAset.destroy', $item->kategori_id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus item ini?');" style="display:inline;">
+                                            @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        
+                                    </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -77,6 +77,8 @@ class kategoriAsetController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $kategoriAset = kategoriAset::findOrFail($id);
+        $kategoriAset->delete();
+        return redirect()->route('kategoriAset.index')->with('delete', 'Data Berhasil Dihapus!');
     }
 }
