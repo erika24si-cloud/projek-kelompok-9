@@ -30,11 +30,11 @@
         </li>
 
         <li class="pc-item">
-          <a href="{{ route('lokasi') }}" class="pc-link">
+          <a href="{{ route('aset.index') }}" class="pc-link">
             <span class="pc-micon">
               <i data-feather="map-pin"></i>
             </span>
-            <span class="pc-mtext">Lokasi Aset</span>
+            <span class="pc-mtext">Aset</span>
           </a>
         </li>
 
@@ -59,9 +59,9 @@
           <label>Other</label>
           <i data-feather="sidebar"></i>
         </li>
-        
+
         <li class="pc-item">
-  <a href="{{ route('sample.page') }}" class="pc-link">  
+  <a href="{{ route('sample.page') }}" class="pc-link">
     <span class="pc-micon">
       <i data-feather="sidebar"></i>
     </span>

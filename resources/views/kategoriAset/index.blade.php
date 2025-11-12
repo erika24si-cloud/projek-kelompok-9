@@ -3,18 +3,18 @@
 @section('title', 'Daftar Kategori Aset')
 
 @section('content')
-   
+
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12 mb-4 text-right">
             <a href="{{ route('kategoriAset.create') }}" class="btn btn-primary">Tambah Kategori Baru</a>
         </div>
-        
+
         <div class="col-span-12">
             <div class="card">
                 <div class="card-header">
                     <h5>Data Kategori Aset</h5>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -38,7 +38,7 @@
                                     <td>{{ $item->created_at->format('d/m/Y') }}</td>
                                     <td>
                                         <a href="{{ route('kategoriAset.edit', $item->kategori_id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                        
+
                                         {{-- Tombol HAPUS (Gunakan Form tersembunyi) --}}
                                         <form action="{{ route('kategoriAset.destroy', $item->kategori_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data {{ $item->nama }}?');">
                                             @csrf
