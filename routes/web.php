@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kategoriAsetController;
 use App\Http\Controllers\AsetController;
+use App\Http\Controllers\WargaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,3 +36,5 @@ Route::get('/sample-page', function () {
 Route::resource('kategoriAset', KategoriAsetController::class);
 
 Route::resource('aset', AsetController::class);
+
+Route::resource('warga', WargaController::class);

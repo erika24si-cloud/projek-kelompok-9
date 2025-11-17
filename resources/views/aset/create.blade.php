@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Aset')
+@section('title', 'Tambah Data Aset Baru')
 
 @section('content')
 
@@ -14,67 +14,127 @@
             </ul>
         </div>
     @endif
-
+    
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Formulir Tambah Kategori Aset Baru</h5>
+                    <h5>Formulir Tambah Data Aset Baru</h5>
                 </div>
-
+                
                 <div class="card-body">
+                    {{-- Form mengarah ke metode store() di AsetController --}}
                     <form method="POST" action="{{ route('aset.store') }}">
-                        @csrf
-
-                        {{-- Input Nama Kategori (name) --}}
+                        @csrf 
+                        
+                        {{-- 1. PILIH KATEGORI (Foreign Key) --}}
                         <div class="form-group mb-4">
-                            <label class="form-label" for="category_name">Nama Kategori Aset</label>
-                            <input
-                                type="text"
-                                class="form-control @error('name') is-invalid @enderror"
-                                id="category_name"
-                                name="name" {{-- Mengubah name="nama" menjadi name="name" --}}
-                                placeholder="Contoh: Elektronik, Kendaraan, Bangunan"
-                                value="{{ old('name') }}"
+                            <label class="form-label" for="kategori_id">Kategori Aset</label>
+                            {{-- $kategoriAsetList diasumsikan dikirim dari AsetController@create --}}
+                            <select 
+                                class="form-control @error('kategori_id') is-invalid @enderror" 
+                                id="kategori_id" 
+                                name="kategori_id"
                                 required
                             >
-                            @error('name') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach($kategoriAsetList as $kategori)
+                                    <option 
+                                        value="{{ $kategori->kategori_id }}"
+                                        {{ old('kategori_id') == $kategori->kategori_id ? 'selected' : '' }}
+                                    >
+                                        {{ $kategori->nama }} ({{ $kategori->kode }})
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('kategori_id') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- Input Kode Aset (code) --}}
+                        {{-- 2. KODE ASET --}}
                         <div class="form-group mb-4">
-                            <label class="form-label" for="category_code">Kode Aset (Singkatan Unik)</label>
-                            <input
-                                type="text"
-                                {{-- Mengubah @error('kode') menjadi @error('code') --}}
-                                class="form-control @error('code') is-invalid @enderror"
-                                id="category_code"
-                                name="code" {{-- Mengubah name="kode" menjadi name="code" --}}
-                                placeholder="Contoh: ELE, KDR, BGN"
-                                value="{{ old('code') }}"
-                                maxlength="20"
+                            <label class="form-label" for="kode_aset">Kode Aset (Otomatis/Manual)</label>
+                            <input 
+                                type="text" 
+                                class="form-control @error('kode_aset') is-invalid @enderror" 
+                                id="kode_aset" 
+                                name="kode_aset"
+                                placeholder="Contoh: ELE-2025-001" 
+                                value="{{ old('kode_aset') }}"
                                 required
                             >
-                            @error('code') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                            @error('kode_aset') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- Input Deskripsi (description) --}}
+                        {{-- 3. NAMA ASET --}}
                         <div class="form-group mb-4">
-                            <label class="form-label" for="category_description">Deskripsi</label>
-                            <textarea
-                                {{-- Mengubah @error('deskripsi') menjadi @error('description') --}}
-                                class="form-control @error('description') is-invalid @enderror"
-                                id="category_description"
-                                name="description" {{-- Mengubah name="deskripsi" menjadi name="description" --}}
-                                rows="3"
-                                placeholder="Jelaskan jenis aset yang termasuk dalam kategori ini."
-                            >{{ old('description') }}</textarea>
-                            @error('description') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                            <label class="form-label" for="nama_aset">Nama Aset</label>
+                            <input 
+                                type="text" 
+                                class="form-control @error('nama_aset') is-invalid @enderror" 
+                                id="nama_aset" 
+                                name="nama_aset"
+                                placeholder="Contoh: Laptop Kerja Lenovo T14" 
+                                value="{{ old('nama_aset') }}"
+                                required
+                            >
+                            @error('nama_aset') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
+                        {{-- 4. TANGGAL PEROLEHAN --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="tgl_perolehan">Tanggal Perolehan</label>
+                            <input 
+                                type="date" 
+                                class="form-control @error('tgl_perolehan') is-invalid @enderror" 
+                                id="tgl_perolehan" 
+                                name="tgl_perolehan"
+                                value="{{ old('tgl_perolehan') }}"
+                                required
+                            >
+                            @error('tgl_perolehan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
+                        {{-- 5. NILAI PEROLEHAN --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="nilai_perolehan">Nilai Perolehan (Rp)</label>
+                            <input 
+                                type="number" 
+                                class="form-control @error('nilai_perolehan') is-invalid @enderror" 
+                                id="nilai_perolehan" 
+                                name="nilai_perolehan"
+                                placeholder="Contoh: 15000000" 
+                                value="{{ old('nilai_perolehan') }}"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+                            @error('nilai_perolehan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+                        
+                        {{-- 6. KONDISI --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="kondisi">Kondisi Aset</label>
+                            <select 
+                                class="form-control @error('kondisi') is-invalid @enderror" 
+                                id="kondisi" 
+                                name="kondisi"
+                                required
+                            >
+                                <option value="">-- Pilih Kondisi --</option>
+                                @foreach(['baik', 'rusak', 'perbaikan'] as $kondisi)
+                                    <option 
+                                        value="{{ $kondisi }}"
+                                        {{ old('kondisi') == $kondisi ? 'selected' : '' }}
+                                    >
+                                        {{ ucfirst($kondisi) }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('kondisi') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mt-4 flex gap-2">
-                            <button type="submit" class="btn btn-primary">Simpan Kategori</button>
-                            {{-- Mengubah route 'kategoriAset.index' menjadi 'assetCategories.index' --}}
+                            <button type="submit" class="btn btn-primary">Simpan Data Aset</button>
                             <a href="{{ route('aset.index') }}" class="btn btn-secondary">Batal / Kembali</a>
                         </div>
                     </form>

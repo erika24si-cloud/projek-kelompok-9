@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kategoriAset', function (Blueprint $table) {
-            $table->increments('kategori_id');
+            $table->bigIncrements('kategori_id');
             $table->string('nama', 100);
             $table->string('kode')->unique();
             $table->string('deskripsi', 100);
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_aset');
+        Schema::dropIfExists('kategoriAset');
     }
 };

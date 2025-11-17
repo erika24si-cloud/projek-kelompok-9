@@ -21,6 +21,16 @@
         </li>
 
         <li class="pc-item">
+          <a href="{{ route('warga.index') }}" class="pc-link">
+            <span class="pc-micon">
+              <i data-feather="eye"></i>
+            </span>
+            <span class="pc-mtext">Warga</span>
+          </a>
+        </li>
+
+
+        <li class="pc-item">
           <a href="{{ route('kategoriAset.index') }}" class="pc-link">
             <span class="pc-micon">
               <i data-feather="briefcase"></i>

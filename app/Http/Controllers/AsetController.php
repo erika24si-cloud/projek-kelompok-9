@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aset;
+use App\Models\kategoriAset;
 
 class AsetController extends Controller
 {
@@ -20,7 +21,8 @@ class AsetController extends Controller
      */
     public function create()
     {
-        return view('aset.create');
+        $kategoriAsetList = kategoriAset::all();
+        return view('aset.create', compact('kategoriAsetList'));
     }
 
     /**
@@ -53,7 +55,8 @@ class AsetController extends Controller
     public function edit(string $id)
     {
         $aset = aset::findOrFail($id);
-        return view('aset.edit', compact('aset'));
+        $kategoriAsetList = kategoriAset::all();
+        return view('aset.edit', compact('kategoriAsetList', 'aset'));
     }
 
     /**
@@ -62,8 +65,7 @@ class AsetController extends Controller
     public function update(Request $request, string $id)
     {
         $aset_id = $id;
-        $aset    = aset::findOrFail($aset);
-
+        $aset = Aset::findOrFail($aset_id); 
         $aset->kategori_id     = $request->kategori_id;
         $aset->kode_aset       = $request->kode_aset;
         $aset->nama_aset       = $request->nama_aset;
