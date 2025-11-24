@@ -4,6 +4,21 @@
 
 @section('content')
 
+<div class="grid grid-cols-12 gap-x-6">
+        
+        <div class="col-span-12 mb-4 d-flex justify-content-between align-items-center">
+            
+            <form method="GET" action="{{ route('aset.index') }}" class="d-flex align-items-center gap-2">
+                
+                <label for="filter_kondisi" class="form-label mb-0 me-2">Filter Kondisi :</label>
+                <select name="kondisi" id="filter_kondisi" class="form-control w-auto" onchange="this.form.submit()">
+                    <option value="all" {{ $kondisiFilter === 'all' || is_null($kondisiFilter) ? 'selected' : '' }}>Semua Kondisi</option>
+                    <option value="Baik" {{ $kondisiFilter === 'Baik' ? 'selected' : '' }}>Baik</option>
+                    <option value="Rusak " {{ $kondisiFilter === 'Rusak ' ? 'selected' : '' }}>Rusak</option>
+                    <option value="Perbaikian" {{ $kondisiFilter === 'Perbaikian' ? 'selected' : '' }}>Perbaikian</option>
+                </select>
+            </form>
+            
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12 mb-4 text-right">
             <a href="{{ route('aset.create') }}" class="btn btn-primary">Tambah Aset Baru</a>
@@ -69,5 +84,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-span-12 mt-4">
+         <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            {{ $dataaset->links() }}
+        </div>
+    </div>
+</div>
+
     </div>
 @endsection

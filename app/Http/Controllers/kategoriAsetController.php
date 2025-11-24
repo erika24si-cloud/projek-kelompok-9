@@ -11,10 +11,19 @@ class kategoriAsetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['datakategoriAset'] = kategoriAset::all();
-		return view('kategoriAset.index',$data);
+        $searchTerm = $request->get('search');
+        $query = KategoriAset::query(); 
+        if ($searchTerm) {
+            $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('kode', 'LIKE', '%' . $searchTerm . '%');
+        }
+        $dataAsetPaginated = $query->simplePaginate(1); 
+        $data['datakategoriAset'] = $dataAsetPaginated;
+        $data['searchTerm'] = $searchTerm; 
+    
+        return view('kategoriAset.index', $data);
     }
 
     /**

@@ -4,6 +4,31 @@
 
 @section('content')
 
+<div class="grid grid-cols-12 gap-x-6">
+
+        <div class="col-span-12 mb-4 d-flex justify-content-between align-items-center">
+            
+            <div style="width: 50%;">
+                <form method="GET" action="{{ route('kategoriAset.index') }}" class="d-flex align-items-center gap-2">
+                    
+                    <input 
+                        type="text" 
+                        name="search" 
+                        class="form-control" 
+                        placeholder="Cari Nama atau Kode..." 
+                        value="{{ $searchTerm ?? '' }}" 
+                        style="width: 250px;"
+                    >
+                    <br>
+                    <button type="submit" class="btn btn-secondary">Cari</button>
+                    <br>
+
+                    @if ($searchTerm)
+                        <a href="{{ route('kategoriAset.index') }}" class="btn btn-sm btn-outline-danger">Reset</a>
+                    @endif
+                </form>
+            </div>
+
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12 mb-4 text-right">
             <a href="{{ route('kategoriAset.create') }}" class="btn btn-primary">Tambah Kategori Baru</a>
@@ -58,5 +83,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-span-12 mt-4">
+         <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            {{ $datakategoriAset->links() }}
+        </div>
+    </div>
+</div>
+
     </div>
 @endsection

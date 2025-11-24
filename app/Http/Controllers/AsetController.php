@@ -10,11 +10,22 @@ class AsetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataaset'] = aset::all();
-        return view('aset.index', $data);
+        $kondisiFilter = $request->get('kondisi');
+        $query = Aset::query();
+
+    if ($kondisiFilter) {
+        if ($kondisiFilter !== 'all') {
+            $query->where('kondisi', $kondisiFilter);
+        }
     }
+    $dataAset = $query->simplePaginate(10); 
+    $data['dataaset'] = $dataAset;
+    $data['kondisiFilter'] = $kondisiFilter; 
+    
+    return view('aset.index', $data);
+}
 
     /**
      * Show the form for creating a new resource.
