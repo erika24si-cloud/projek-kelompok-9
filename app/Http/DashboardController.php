@@ -1,14 +1,17 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-<<<<<<< Updated upstream
-        return view ('admin.dashboard');
+        return view('admin.dashboard');
     }
 
     /**
@@ -57,8 +60,5 @@ class DashboardController extends Controller
     public function destroy(string $id)
     {
         //
-=======
-        return view('pages.index');
->>>>>>> Stashed changes
     }
 }

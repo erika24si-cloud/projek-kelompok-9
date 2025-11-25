@@ -1,0 +1,35 @@
+@extends('layouts.main')
+
+@section('content')
+
+  @@include('../layouts/layout-vertical.html')
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      @@include('../layouts/breadcrumb.html', {'breadcrumb-item': 'Other', 'breadcrumb-item-active': 'Sample Page'})
+
+      <!-- [ Main Content ] start -->
+
+      <div class="grid grid-cols-12 gap-x-6">
+        <!-- [ sample-page ] start -->
+        <div class="col-span-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Hello card</h5>
+            </div>
+            <div class="card-body">
+            </div>
+          </div>
+
+        </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+  @@include('../layouts/footer-block.html') @@include('../layouts/footer-js.html')
+  
+
+@endsection
