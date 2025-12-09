@@ -70,11 +70,11 @@
               <span>Lock Screen</span>
             </a>
              {{-- Logout Quick Link --}}
-            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-quick').submit();">
+            <a class="dropdown-item" href="{{ route('auth.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-quick').submit();">
               <i class="ti ti-power"></i>
               <span>Logout</span>
             </a>
-            <form id="logout-form-quick" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="logout-form-quick" action="{{ route('auth.logout') }}" method="POST" class="d-none">
               @csrf
             </form>
           </div>
@@ -195,8 +195,8 @@
                   <img src="{{ asset('assets/images/user/avatar-2.jpg') }}" alt="user-image" class="w-10 rounded-full" />
                 </div>
                 <div class="grow ms-3">
-                  <h6 class="mb-1 text-white">Carson Darrin 🖖</h6>
-                  <span class="text-white">carson.darrin@company.io</span>
+                  <h6 class="mb-1 text-white">{{ auth()->user()->nama }}</h6>
+                  <span class="text-white">{{ auth()->user()->email }}</span>
                 </div>
               </div>
             </div>
@@ -226,6 +226,14 @@
                     <span>Change Password</span>
                   </span>
                 </a>
+                <a href="#!" class="dropdown-item">
+                  <span>
+                    <svg class="pc-icon text-muted me-2 inline-block">
+                      <use xlink:href="#custom-share-bold"></use>
+                    </svg>
+                    <span>{{session('last_login')}}</span>
+                  </span>
+                </a>
                 <div class="grid my-3">
                   <button class="btn btn-primary flex items-center justify-center" onclick="event.preventDefault(); document.getElementById('logout-form-profile').submit();">
                     <svg class="pc-icon me-2 w-[22px] h-[22px]">
@@ -233,7 +241,7 @@
                     </svg>
                     Logout
                   </button>
-                   <form id="logout-form-profile" action="{{ route('logout') }}" method="POST" class="d-none">
+                   <form id="logout-form-profile" action="{{ route('auth.logout') }}" method="POST" class="d-none">
                     @csrf
                   </form>
                 </div>

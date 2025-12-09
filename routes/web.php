@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kategoriAsetController;
 use App\Http\Controllers\AsetController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,4 +40,12 @@ Route::resource('kategoriAset', KategoriAsetController::class);
 
 Route::resource('aset', AsetController::class);
 
-Route::resource('warga', WargaController::class);
+Route::resource('warga', WargaController::class)
+-> middleware('checkrole:Admin');
+
+Route::resource('warga', WargaController::class)
+-> middleware('checkislogin');
+
+Route::get('auth', [AuthController::class, 'index'] )->name('auth');
+Route::get('auth/login', [AuthController::class, 'login'] )->name('auth.login');
+Route::post('auth/logout', [AuthController::class, 'logout'] )->name('auth.logout');

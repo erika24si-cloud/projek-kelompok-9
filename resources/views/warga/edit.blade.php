@@ -62,6 +62,29 @@
                             @error('nama') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
+                        {{-- 3. Role --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="role">Role</label>
+                            <select 
+                                class="form-control @error('role') is-invalid @enderror" 
+                                id="role" 
+                                name="role"
+                                required
+                            >
+                                <option value="">-- Pilih Role --</option>
+                                @foreach(['Admin', 'Pelanggan', 'Mitra'] as $rl)
+                                    <option 
+                                        value="{{ $rl }}"
+                                        {{-- Mempertahankan nilai lama atau nilai database --}}
+                                        {{ old('role', $warga->role) == $rl ? 'selected' : '' }}
+                                    >
+                                        {{ $rl }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('role') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
                         {{-- 3. JENIS KELAMIN --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="jenis_kelamin">Jenis Kelamin</label>

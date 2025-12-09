@@ -25,6 +25,7 @@
                                     <th>#</th>
                                     <th>No. KTP</th>
                                     <th>Nama</th>
+                                     <th>Role</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Agama</th>
                                     <th>Pekerjaan</th>
@@ -39,6 +40,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $warga->no_ktp }}</td>
                                     <td>{{ $warga->nama }}</td>
+                                     <td>{{$warga->role}}</td>
                                     <td>{{ $warga->jenis_kelamin }}</td>
                                     <td>{{ $warga->agama }}</td>
                                     <td>{{ $warga->pekerjaan }}</td>

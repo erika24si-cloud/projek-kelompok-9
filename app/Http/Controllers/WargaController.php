@@ -32,6 +32,7 @@ class WargaController extends Controller
         //dd($request->all()) 
         $data['no_ktp'] = $request->no_ktp;
         $data['nama'] = $request->nama;
+         $data['role'] = $request->role;
         $data['jenis_kelamin'] = $request->jenis_kelamin;
         $data['agama'] = $request->agama;
         $data['pekerjaan'] = $request->pekerjaan;
@@ -68,6 +69,7 @@ class WargaController extends Controller
 
         $warga->no_ktp = $request->no_ktp;
         $warga->nama  = $request->nama;
+        $warga->role = $request->role;
         $warga->jenis_kelamin   = $request->jenis_kelamin;
         $warga->agama   = $request->agama;
         $warga->pekerjaan   = $request->pekerjaan;

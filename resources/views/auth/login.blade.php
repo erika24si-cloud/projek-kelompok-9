@@ -17,23 +17,25 @@
                     <div class="card sm:my-12 w-full shadow-none">
                         <div class="card-body !p-10">
                             <div class="text-center mb-8">
-                                <a href="{{ route('dashboard') }}">
+                                <a href="{{ route('warga.index') }}">
                                     <img src="{{ asset('assets/images/logo-dark.svg') }}" alt="img" class="mx-auto auth-logo"/>
                                 </a>
                             </div>
                             <h4 class="text-center font-medium mb-4">Login</h4>
                             
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="GET" action="{{ route('auth.login') }}">
                                 @csrf
                                 
-                                <div class="mb-3">
+                                <div class="mb-4">
+                                    {{-- Field Nama --}}
+                                    <input type="nama" class="form-control" id="floatingInput1" placeholder="Nama" name="nama" required />
+                                </div>
+
+                                 <div class="mb-3">
                                     {{-- Field Email --}}
                                     <input type="email" class="form-control" id="floatingInput" placeholder="Email Address" name="email" required autofocus />
                                 </div>
-                                <div class="mb-4">
-                                    {{-- Field Password --}}
-                                    <input type="password" class="form-control" id="floatingInput1" placeholder="Password" name="password" required />
-                                </div>
+                                
                                 
                                 <div class="flex mt-1 justify-between items-center flex-wrap">
                                     <div class="form-check">
@@ -55,12 +57,6 @@
                                 <h6 class="font-medium mb-0">Don't have an Account?</h6>
                                 {{-- Tautan Create Account: Menggunakan route('register') --}}
                                 <a href="{{ route('register') }}" class="text-primary-500">Create Account</a>
-                            </div>
-
-                            <div class="mt-4 text-center">
-                                <a href="{{ route('dashboard') }}" class="btn btn-outline-secondary btn-sm mx-auto">
-                                    <i data-feather="arrow-left"></i> Back
-                                </a>
                             </div>
 
                         </div>
