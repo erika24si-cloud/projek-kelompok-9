@@ -17,4 +17,6 @@ Route::get('/anggota', function () {
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::resource('kategoriAset', kategoriAsetController::class);Route::resource('products', \App\Http\Controllers\ProductController::class);
+Route::resource('products', \App\Http\Controllers\ProductController::class);
+
+Route::resource('kategori-aset', kategoriAsetController::class);

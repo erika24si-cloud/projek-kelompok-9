@@ -4,25 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
+return new class extends Migration {
     public function up(): void
     {
-        Schema::create('kategoriAset', function (Blueprint $table) {
-            $table->increments('kategori_id');
-            $table->string('nama', 100);
+        Schema::create('kategori_aset', function (Blueprint $table) {
+            $table->id('kategori_id');
+            $table->string('nama');
             $table->string('kode')->unique();
-            $table->string('deskripsi', 100);
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('kategori_aset');
