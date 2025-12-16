@@ -1,92 +1,63 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\KategoriAset;
 use Illuminate\Http\Request;
-use App\Models\kategoriAset;
-use Illuminate\Validation\Rule;
 
-class kategoriAsetController extends Controller
+class KategoriAsetController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
+    public function index()
     {
-        $searchTerm = $request->get('search');
-        $query = KategoriAset::query(); 
-        if ($searchTerm) {
-            $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
-                  ->orWhere('kode', 'LIKE', '%' . $searchTerm . '%');
-        }
-        $dataAsetPaginated = $query->simplePaginate(1); 
-        $data['datakategoriAset'] = $dataAsetPaginated;
-        $data['searchTerm'] = $searchTerm; 
-    
-        return view('kategoriAset.index', $data);
+        $kategori = KategoriAset::all();
+        return view('kategori_aset.index', compact('kategori'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('kategoriAset.create');
+        return view('kategori_aset.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //dd($request->all()) 
-        $data['nama'] = $request->nama;
-        $data['kode'] = $request->kode;
-        $data['deskripsi'] = $request->deskripsi;
-        kategoriAset::create($data);
-        return redirect()->route('kategoriAset.index')->with('success', 'Penambahan Data Berhasil!');
+        $request->validate([
+            'nama' => 'required',
+            'kode' => 'required|unique:kategori_aset,kode',
+            'deskripsi' => 'nullable',
+        ]);
+
+        KategoriAset::create($request->all());
+
+        return redirect()->route('kategori-aset.index')
+            ->with('success', 'Kategori aset berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        return view('kategoriAset.index');
+        $kategori = KategoriAset::findOrFail($id);
+        return view('kategori_aset.edit', compact('kategori'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-{
-    $kategoriAset = KategoriAset::findOrFail($id);
-    return view('kategoriAset.edit', compact('kategoriAset'));
-}
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $kategori_id = $id;
-        $kategoriAset = kategoriAset::findOrFail($kategori_id);
+        $kategori = KategoriAset::findOrFail($id);
 
-        $kategoriAset->nama = $request->nama;
-        $kategoriAset->kode  = $request->kode;
-        $kategoriAset->deskripsi   = $request->deskripsi;
-        
-        $kategoriAset->save();
-        return redirect()->route('kategoriAset.index')->with('update', 'Perubahan Data Berhasil!');
+        $request->validate([
+            'nama' => 'required',
+            'kode' => 'required|unique:kategori_aset,kode,' . $kategori->kategori_id . ',kategori_id',
+            'deskripsi' => 'nullable',
+        ]);
+
+        $kategori->update($request->all());
+
+        return redirect()->route('kategori-aset.index')
+            ->with('success', 'Kategori aset berhasil diupdate');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $kategoriAset = kategoriAset::findOrFail($id);
-        $kategoriAset->delete();
-        return redirect()->route('kategoriAset.index')->with('delete', 'Data Berhasil Dihapus!');
+        KategoriAset::destroy($id);
+
+        return redirect()->route('kategori-aset.index')
+            ->with('success', 'Kategori aset berhasil dihapus');
     }
 }
