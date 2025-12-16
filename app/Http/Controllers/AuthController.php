@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\warga;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,28 +11,26 @@ class AuthController extends Controller
     public function index()
     {
        if (Auth::check()) {
-             return redirect()->route('warga.index');
+             return redirect()->route('user.index');
          }
 		    return view('auth.login');
     }
 
     public function login(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
+       $request->validate([
             'email'    => 'required|email',
+            'password' => 'required',
         ]);
 
-        $warga = warga::where('email', $request->email)
-              ->where('nama', $request->nama) 
-              ->first();
-        if ($warga) {
-            Auth::login($warga);
+        $user = User::where('email', $request->email)->first();
+        if ($user && Hash::check($request->password, $user->password)) {
+            Auth::login($user);
             session(['last_login' => now()]);
 
-            return redirect()->route('warga.index')->with('success', 'Login berhasil!');
+            return redirect()->route('user.index')->with('success', 'Login berhasil!');
         } else {
-            return back()->withErrors(['email' => 'Nama atau email salah'])->withInput();
+            return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
         }
 }
 

@@ -7,6 +7,10 @@ use App\Http\Controllers\WargaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\lokasiAsetController;
+use App\Http\Controllers\pemeliharaanAsetController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,12 +44,20 @@ Route::resource('kategoriAset', KategoriAsetController::class);
 
 Route::resource('aset', AsetController::class);
 
-Route::resource('warga', WargaController::class)
--> middleware('checkrole:Admin');
-
-Route::resource('warga', WargaController::class)
--> middleware('checkislogin');
+Route::resource('warga', WargaController::class);
 
 Route::get('auth', [AuthController::class, 'index'] )->name('auth');
 Route::get('auth/login', [AuthController::class, 'login'] )->name('auth.login');
 Route::post('auth/logout', [AuthController::class, 'logout'] )->name('auth.logout');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+Route::resource('user', UserController::class);
+//->middleware('checkislogin');
+
+//Route::resource('user', UserController::class)
+//->middleware('checkrole:Super Admin');
+
+
+Route::resource('lokasiAset', lokasiAsetController::class);
+Route::resource('pemeliharaanAset', pemeliharaanAsetController::class);

@@ -21,8 +21,7 @@
                     >
                     <br>
                     <button type="submit" class="btn btn-secondary">Cari</button>
-                    <br>
-
+                    
                     @if ($searchTerm)
                         <a href="{{ route('kategoriAset.index') }}" class="btn btn-sm btn-outline-danger">Reset</a>
                     @endif

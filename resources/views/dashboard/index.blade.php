@@ -5,365 +5,150 @@
 @section('content')
 
 <div class="grid grid-cols-12 gap-x-6">
-  <div class="col-span-12 xl:col-span-4 md:col-span-6">
-    <div class="card">
-      <div class="card-header !pb-0 !border-b-0">
-        <h5>Daily Sales</h5>
-      </div>
-      <div class="card-body">
-        <div class="flex items-center justify-between gap-3 flex-wrap">
-          <h3 class="font-light flex items-center mb-0">
-            <i class="feather icon-arrow-up text-success-500 text-[30px] mr-1.5"></i>
-            $ 249.95
-          </h3>
-          <p class="mb-0">67%</p>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
-          <div class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
-            style="width: 75%"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-span-12 xl:col-span-4 md:col-span-6">
-    <div class="card">
-      <div class="card-header !pb-0 !border-b-0">
-        <h5>Monthly Sales</h5>
-      </div>
-      <div class="card-body">
-        <div class="flex items-center justify-between gap-3 flex-wrap">
-          <h3 class="font-light flex items-center mb-0">
-            <i class="feather icon-arrow-down text-danger-500 text-[30px] mr-1.5"></i>
-            $ 2.942.32
-          </h3>
-          <p class="mb-0">36%</p>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
-          <div class="bg-theme-bg-2 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
-            style="width: 35%"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-span-12 xl:col-span-4">
-    <div class="card">
-      <div class="card-header !pb-0 !border-b-0">
-        <h5>Yearly Sales</h5>
-      </div>
-      <div class="card-body">
-        <div class="flex items-center justify-between gap-3 flex-wrap">
-          <h3 class="font-light flex items-center mb-0">
-            <i class="feather icon-arrow-up text-success-500 text-[30px] mr-1.5"></i>
-            $8.638.32
-          </h3>
-          <p class="mb-0">80%</p>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
-          <div class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
-            style="width: 80%"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-span-12 xl:col-span-4">
-    <div class="card card-social">
-      <div class="card-body border-b border-theme-border dark:border-themedark-border">
-        <div class="flex items-center justify-center">
-          <div class="shrink-0">
-            <i class="fab fa-facebook-f text-primary-500 text-[36px]"></i>
-          </div>
-          <div class="grow ltr:text-right rtl:text-left">
-            <h3 class="mb-2">12,281</h3>
-            <h5 class="text-success-500 mb-0">+7.2% <span class="text-muted">Total Likes</span></h5>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="grid grid-cols-12 gap-x-6">
-          <div class="col-span-6">
-            <h6 class="text-center mb-2.5"><span class="text-muted m-r-5">Target:</span>35,098</h6>
-            <div class="w-full bg-theme-bodybg rounded-lg h-1.5 dark:bg-themedark-bodybg">
-              <div class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 60%"></div>
+    <div class="col-span-12 xl:col-span-4 md:col-span-6">
+        <div class="card">
+            <div class="card-header !pb-0 !border-b-0">
+                <h5 class="text-blue-500">Total Data Warga</h5>
             </div>
-          </div>
-          <div class="col-span-6">
-            <h6 class="text-center mb-2.5"><span class="text-muted m-r-5">Duration:</span>350</h6>
-            <div class="w-full bg-theme-bodybg rounded-lg h-1.5 dark:bg-themedark-bodybg">
-              <div class="bg-theme-bg-2 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 45%"></div>
+            <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                    <h3 class="font-light flex items-center mb-0">
+                        <i class="feather icon-users text-blue-500 text-[30px] mr-1.5"></i>
+                        <span id="total-warga">{{ $totalWarga }}</span>
+                    </h3>
+                    <p class="mb-0 text-muted">Warga Tercatat</p>
+                </div>
+                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
+                    <div class="bg-blue-500 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
+                        style="width: 100%"></div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="col-span-12 xl:col-span-4 md:col-span-6">
-    <div class="card card-social">
-      <div class="card-body border-b border-theme-border dark:border-themedark-border">
-        <div class="flex items-center justify-center">
-          <div class="shrink-0">
-            <i class="fab fa-twitter text-primary-500 text-[36px]"></i>
-          </div>
-          <div class="grow ltr:text-right rtl:text-left">
-            <h3 class="mb-2">11,200</h3>
-            <h5 class="text-purple-500 mb-0">+6.2% <span class="text-muted">Total Likes</span></h5>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="grid grid-cols-12 gap-x-6">
-          <div class="col-span-6">
-            <h6 class="text-center mb-2.5"><span class="text-muted m-r-5">Target:</span>34,185</h6>
-            <div class="w-full bg-theme-bodybg rounded-lg h-1.5 dark:bg-themedark-bodybg">
-              <div class="bg-success-500 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 40%"></div>
-            </div>
-          </div>
-          <div class="col-span-6">
-            <h6 class="text-center mb-2.5"><span class="text-muted m-r-5">Duration:</span>800</h6>
-            <div class="w-full bg-theme-bodybg rounded-lg h-1.5 dark:bg-themedark-bodybg">
-              <div class="bg-primary-500 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 70%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-span-12 xl:col-span-4 md:col-span-6">
-    <div class="card card-social">
-      <div class="card-body border-b border-theme-border dark:border-themedark-border">
-        <div class="flex items-center justify-center">
-          <div class="shrink-0">
-            <i class="fab fa-google-plus-g text-danger-500 text-[36px]"></i>
-          </div>
-          <div class="grow ltr:text-right rtl:text-left">
-            <h3 class="mb-2">10,500</h3>
-            <h5 class="text-purple-500 mb-0">+5.9% <span class="text-muted">Total Likes</span></h5>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="grid grid-cols-12 gap-x-6">
-          <div class="col-span-6">
-            <h6 class="text-center mb-2.5"><span class="text-muted m-r-5">Target:</span>25,998</h6>
-            <div class="w-full bg-theme-bodybg rounded-lg h-1.5 dark:bg-themedark-bodybg">
-              <div class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 80%"></div>
-            </div>
-          </div>
-          <div class="col-span-6">
-            <h6 class="text-center mb-2.5"><span class="text-muted m-r-5">Duration:</span>900</h6>
-            <div class="w-full bg-theme-bodybg rounded-lg h-1.5 dark:bg-themedark-bodybg">
-              <div class="bg-theme-bg-2 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar" style="width: 50%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-span-12 xl:col-span-4 md:col-span-6">
-    <div class="card user-list">
-      <div class="card-header">
-        <h5>Rating</h5>
-      </div>
-      <div class="card-body">
-        <div class="flex items-center justify-between gap-1 mb-5">
-          <h2 class="font-light flex items-center m-0">
-            4.7
-            <i class="fas fa-star text-[10px] ml-2.5 text-warning-500"></i>
-          </h2>
-          <h6 class="flex items-center m-0">
-            0.4
-            <i class="fas fa-caret-up text-success text-[22px] ml-2.5"></i>
-          </h6>
-        </div>
 
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <h6 class="flex items-center gap-1">
-            <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-            5
-          </h6>
-          <h6>384</h6>
+    <div class="col-span-12 xl:col-span-4 md:col-span-6">
+        <div class="card">
+            <div class="card-header !pb-0 !border-b-0">
+                <h5 class="text-green-500">Total Data Aset</h5>
+            </div>
+            <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                    <h3 class="font-light flex items-center mb-0">
+                        <i class="feather icon-archive text-green-500 text-[30px] mr-1.5"></i>
+                        <span id="total-aset">{{ $totalAset }}</span>
+                    </h3>
+                    <p class="mb-0 text-muted">Aset Tercatat</p>
+                </div>
+                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
+                    <div class="bg-green-500 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
+                        style="width: 100%"></div>
+                </div>
+            </div>
         </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-          <div
-            class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-            role="progressbar"
-            style="width: 70%"
-          ></div>
-        </div>
-
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <h6 class="flex items-center gap-1">
-            <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-            4
-          </h6>
-          <h6>145</h6>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-          <div
-            class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-            role="progressbar"
-            style="width: 35%"
-          ></div>
-        </div>
-
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <h6 class="flex items-center gap-1">
-            <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-            3
-          </h6>
-          <h6>24</h6>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-          <div
-            class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-            role="progressbar"
-            style="width: 25%"
-          ></div>
-        </div>
-
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <h6 class="flex items-center gap-1">
-            <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-            2
-          </h6>
-          <h6>1</h6>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mb-6 mt-3 dark:bg-themedark-bodybg">
-          <div
-            class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-            role="progressbar"
-            style="width: 10%"
-          ></div>
-        </div>
-
-        <div class="flex items-center justify-between gap-2 mb-2">
-          <h6 class="flex items-center gap-1">
-            <i class="fas fa-star text-[10px] mr-2.5 text-warning-500"></i>
-            1
-          </h6>
-          <h6>0</h6>
-        </div>
-        <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-4 dark:bg-themedark-bodybg">
-          <div
-            class="bg-theme-bg-1 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]"
-            role="progressbar"
-            style="width: 0%"
-          ></div>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="col-span-12 xl:col-span-8 md:col-span-6">
-    <div class="card table-card">
-      <div class="card-header">
-        <h5>Recent Users</h5>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <tbody>
-              <tr class="unread">
-                <td>
-                  <img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="activity-user" />
-                </td>
-                <td>
-                  <h6 class="mb-1">Isabella Christensen</h6>
-                  <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                </td>
-                <td>
-                  <h6 class="text-muted">
-                    <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                    11 MAY 12:56
-                  </h6>
-                </td>
-                <td>
-                  <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                  <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                </td>
-              </tr>
-              <tr class="unread">
-                <td>
-                  <img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('assets/images/user/avatar-2.jpg') }}" alt="activity-user" />
-                </td>
-                <td>
-                  <h6 class="mb-1">Mathilde Andersen</h6>
-                  <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                </td>
-                <td>
-                  <h6 class="text-muted">
-                    <i class="fas fa-circle text-danger text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                    11 MAY 10:35
-                  </h6>
-                </td>
-                <td>
-                  <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                  <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                </td>
-              </tr>
-              <tr class="unread">
-                <td>
-                  <img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('assets/images/user/avatar-3.jpg') }}" alt="activity-user" />
-                </td>
-                <td>
-                  <h6 class="mb-1">Karla Sorensen</h6>
-                  <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                </td>
-                <td>
-                  <h6 class="text-muted">
-                    <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                    9 MAY 17:38
-                  </h6>
-                </td>
-                <td>
-                  <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                  <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                </td>
-              </tr>
-              <tr class="unread">
-                <td>
-                  <img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="activity-user" />
-                </td>
-                <td>
-                  <h6 class="mb-1">Ida Jorgensen</h6>
-                  <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                </td>
-                <td>
-                  <h6 class="text-muted f-w-300">
-                    <i class="fas fa-circle text-danger text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                    19 MAY 12:56
-                  </h6>
-                </td>
-                <td>
-                  <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                  <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                </td>
-              </tr>
-              <tr class="unread">
-                <td>
-                  <img class="rounded-full max-w-10" style="width: 40px" src="{{ asset('assets/images/user/avatar-2.jpg') }}" alt="activity-user" />
-                </td>
-                <td>
-                  <h6 class="mb-1">Albert Andersen</h6>
-                  <p class="m-0">Lorem Ipsum is simply dummy text of…</p>
-                </td>
-                <td>
-                  <h6 class="text-muted">
-                    <i class="fas fa-circle text-success text-[10px] ltr:mr-4 rtl:ml-4"></i>
-                    21 July 12:56
-                  </h6>
-                </td>
-                <td>
-                  <a href="#!" class="badge bg-theme-bg-2 text-white text-[12px] mx-2">Reject</a>
-                  <a href="#!" class="badge bg-theme-bg-1 text-white text-[12px]">Approve</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+    <div class="col-span-12 xl:col-span-4">
+        <div class="card">
+            <div class="card-header !pb-0 !border-b-0">
+                <h5 class="text-yellow-500">Total Kategori Aset</h5>
+            </div>
+            <div class="card-body">
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                    <h3 class="font-light flex items-center mb-0">
+                        <i class="feather icon-tag text-yellow-500 text-[30px] mr-1.5"></i>
+                        <span id="total-kategori">{{ $totalKategori }}</span>
+                    </h3>
+                    <p class="mb-0 text-muted">Kategori Tercatat</p>
+                </div>
+                <div class="w-full bg-theme-bodybg rounded-lg h-1.5 mt-6 dark:bg-themedark-bodybg">
+                    <div class="bg-yellow-500 h-full rounded-lg shadow-[0_10px_20px_0_rgba(0,0,0,0.3)]" role="progressbar"
+                        style="width: 100%"></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+    <div class="col-span-12 xl:col-span-8 md:col-span-6">
+        <div class="card table-card">
+            <div class="card-header">
+                <h5>Warga Terbaru</h5>
+                <a href="{{ route('warga.index') }}" class="text-blue-500 text-sm">Lihat Semua</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover w-full">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b">No. KTP</th>
+                                <th class="py-2 px-4 border-b">Nama</th>
+                                <th class="py-2 px-4 border-b">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- LOOPING DATA DARI VARIABEL $wargaTerbaru --}}
+                            @forelse($wargaTerbaru as $warga)
+                            <tr>
+                                <td class="py-2 px-4">{{ $warga->no_ktp }}</td>
+                                <td class="py-2 px-4">{{ $warga->nama }}</td>
+                                <td class="py-2 px-4">
+                                    <a href="{{ route('warga.edit', $warga->warga_id) }}" class="badge bg-yellow-500 text-white text-[12px] mx-1">Edit</a>
+                                    <a href="{{ route('warga.destroy', $warga->warga_id) }}" class="badge bg-red-500 text-white text-[12px] mx-1">Hapus</a>
+                                </td> 
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="4" class="py-2 px-4 text-center text-muted">Belum ada data warga terbaru yang tercatat.</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-span-12 xl:col-span-4 md:col-span-6">
+        <div class="card table-card">
+            <div class="card-header">
+                <h5>Aset Terbaru</h5>
+                <a href="{{ route('aset.index') }}" class="text-green-500 text-sm">Lihat Semua</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover w-full">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b">Nama Aset</th>
+                                <th class="py-2 px-4 border-b">Kondisi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($asetTerbaru as $aset)
+                            <tr>
+                                <td class="py-2 px-4">{{ $aset->nama_aset }}</td>
+                                <td class="py-2 px-4">
+                                    @php
+                                        // Menentukan warna badge berdasarkan kondisi
+                                        $badgeClass = ($aset->kondisi == 'Baik') ? 'bg-green-500' : 'bg-red-500';
+                                    @endphp
+                                    <span class="badge {{ $badgeClass }} text-white">{{ $aset->kondisi }}</span>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="2" class="py-2 px-4 text-center text-muted">Belum ada data aset terbaru yang tercatat.</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>
 @endsection
 
 @push('scripts')
-    @endpush
+{{-- Script JS tambahan jika diperlukan --}}
+@endpush

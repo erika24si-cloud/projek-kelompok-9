@@ -23,17 +23,18 @@
                             </div>
                             <h4 class="text-center font-medium mb-4">Login</h4>
                             
+                            
                             <form method="GET" action="{{ route('auth.login') }}">
                                 @csrf
                                 
                                 <div class="mb-4">
-                                    {{-- Field Nama --}}
-                                    <input type="nama" class="form-control" id="floatingInput1" placeholder="Nama" name="nama" required />
+                                    {{-- Field Email --}}
+                                    <input type="email" class="form-control" id="floatingInput1" placeholder="Email" name="email" required />
                                 </div>
 
                                  <div class="mb-3">
-                                    {{-- Field Email --}}
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="Email Address" name="email" required autofocus />
+                                    {{-- Field Password --}}
+                                    <input type="password" class="form-control" id="floatingInput" placeholder="Password" name="password" required autofocus />
                                 </div>
                                 
                                 

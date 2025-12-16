@@ -11,7 +11,6 @@ class warga extends Authenticatable
     protected $primaryKey = 'warga_id';
     protected $fillable = ['no_ktp',
         'nama',
-        'role',
         'jenis_kelamin',
         'agama',
         'pekerjaan',

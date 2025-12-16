@@ -11,9 +11,6 @@ class Aset extends Model
 
     public function kategori() 
     {
-        // 1. App\Models\KategoriAset (Model Target)
-        // 2. 'kategori_id' (Foreign Key di tabel 'aset' Anda)
-        // 3. 'kategori_id' (Primary Key di tabel 'kategori_aset' target)
         return $this->belongsTo(kategoriAset::class, 'kategori_id', 'kategori_id');
     }
 }

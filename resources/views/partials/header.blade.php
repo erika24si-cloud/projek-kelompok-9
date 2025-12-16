@@ -195,8 +195,22 @@
                   <img src="{{ asset('assets/images/user/avatar-2.jpg') }}" alt="user-image" class="w-10 rounded-full" />
                 </div>
                 <div class="grow ms-3">
-                  <h6 class="mb-1 text-white">{{ auth()->user()->nama }}</h6>
-                  <span class="text-white">{{ auth()->user()->email }}</span>
+                 @if(auth()->check())
+                <h6 class="mb-1 text-white">
+                 {{Auth::user()->name}}
+    </h6>
+    <span class="text-white">
+        {{Auth::user()->email}}
+    </span>
+@else
+    <h6 class="mb-1 text-white">Guest</h6>
+    <span class="text-white">
+        <a href="{{ route('login') }}" class="text-white underline">
+            Login
+        </a>
+    </span>
+@endif
+
                 </div>
               </div>
             </div>

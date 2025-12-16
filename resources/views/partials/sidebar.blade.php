@@ -19,6 +19,15 @@
           </a>
         </li>
 
+         <li class="pc-item">
+          <a href="{{ route('user.index') }}" class="pc-link">
+            <span class="pc-micon">
+              <i data-feather="eye"></i>
+            </span>
+            <span class="pc-mtext">User</span>
+          </a>
+        </li>
+
         <li class="pc-item">
           <a href="{{ route('warga.index') }}" class="pc-link">
             <span class="pc-micon">
@@ -41,9 +50,27 @@
         <li class="pc-item">
           <a href="{{ route('aset.index') }}" class="pc-link">
             <span class="pc-micon">
-              <i data-feather="map-pin"></i>
+              <i data-feather="slack"></i>
             </span>
             <span class="pc-mtext">Aset</span>
+          </a>
+        </li>
+
+        <li class="pc-item">
+          <a href="{{ route('lokasiAset.index') }}" class="pc-link">
+            <span class="pc-micon">
+              <i data-feather="map-pin"></i>
+            </span>
+            <span class="pc-mtext">Lokasi Aset</span>
+          </a>
+        </li>
+
+         <li class="pc-item">
+          <a href="{{ route('pemeliharaanAset.index') }}" class="pc-link">
+            <span class="pc-micon">
+              <i data-feather="map-pin"></i>
+            </span>
+            <span class="pc-mtext">Pemeliharaan Aset</span>
           </a>
         </li>
 
