@@ -23,7 +23,6 @@
                 </div>
 
                 <div class="card-body">
-                    {{-- Form mengarah ke metode update() dan menggunakan @method('PUT') --}}
                     <form
                         method="POST"
                         action="{{ route('user.update', $users->id) }}"
@@ -31,7 +30,6 @@
                         @csrf
                         @method('PUT')
 
-                        {{-- 1. Nama Pengguna --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="user_name">Nama Pengguna</label>
                             <input
@@ -46,7 +44,6 @@
                             @error('name') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- 2. Email --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="users_email">Alamat Email</label>
                             <input
@@ -61,7 +58,6 @@
                             @error('email') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- 3. Password (Opsional untuk diubah) --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="user_password">Password (Kosongkan jika tidak ingin diubah)</label>
                             <input
@@ -75,7 +71,6 @@
                             @error('password') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- 4. Konfirmasi Password --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="user_password_confirmation">Konfirmasi Password</label>
                             <input
@@ -86,8 +81,7 @@
                                 placeholder="Ketik ulang password"
                             >
                         </div>
-                        
-                        {{-- 5. Role/Peran --}}
+
                         <div class="form-group mb-4">
                             <label class="form-label" for="user_role">Peran (Role)</label>
                             <select
@@ -98,9 +92,8 @@
                             >
                                 <option value="">Pilih Peran</option>
                                 <option value="admin" {{ old('role', $users->role) == 'admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="operator" {{ old('role', $users->role) == 'operator' ? 'selected' : '' }}>Operator</option>
-                                <option value="viewer" {{ old('role', $users->role) == 'viewer' ? 'selected' : '' }}>Viewer</option>
-                                {{-- Tambahkan opsi lain sesuai kebutuhan Anda --}}
+                                <option value="guest" {{ old('role', $users->role) == 'guest' ? 'selected' : '' }}>Guest</option>
+
                             </select>
                             @error('role') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>

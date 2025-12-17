@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Riwayat Pemeliharaan Aset')
+@section('title', 'Tambah Riwayat Mutasi Aset')
 
 @section('content')
 
@@ -18,11 +18,11 @@
         <div class="col-span-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Formulir Tambah Riwayat Pemeliharaan</h5>
+                    <h5>Formulir Tambah Riwayat Mutasi</h5>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pemeliharaanAset.store') }}">
+                    <form method="POST" action="{{ route('mutasiAset.store') }}">
                         @csrf
 
                         <div class="form-group mb-4">
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label class="form-label" for="tanggal">Tanggal Pemeliharaan</label>
+                            <label class="form-label" for="tanggal">Tanggal Mutasi</label>
                             <input
                                 type="date"
                                 class="form-control @error('tanggal') is-invalid @enderror"
@@ -60,50 +60,34 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label class="form-label" for="tindakan">Tindakan Pemeliharaan</label>
+                            <label class="form-label" for="jenis_mutasi">Jenis mutasi</label>
                             <textarea
-                                class="form-control @error('tindakan') is-invalid @enderror"
-                                id="tindakan"
-                                name="tindakan"
+                                class="form-control @error('jenis_mutasi') is-invalid @enderror"
+                                id="jenis_mutasi"
+                                name="jenis_mutasi"
                                 rows="3"
-                                placeholder="Jelaskan tindakan pemeliharaan yang dilakukan (Contoh: Ganti oli mesin, perbaikan komponen X)"
+                                placeholder="Jelaskan jenis mutasi yang terjadi (Contoh: Pindah lokasi, perbaikan komponen X)"
                                 required
-                            >{{ old('tindakan') }}</textarea>
-                            @error('tindakan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                            >{{ old('jenis_mutasi') }}</textarea>
+                            @error('jenis_mutasi') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="form-group mb-4">
-                            <label class="form-label" for="biaya">Biaya Pemeliharaan (Rp)</label>
-                            <input
-                                type="number"
-                                class="form-control @error('biaya') is-invalid @enderror"
-                                id="biaya"
-                                name="biaya"
-                                placeholder="Contoh: 500000"
-                                value="{{ old('biaya') }}"
-                                min="0"
-                                step="any"
-                                required
-                            >
-                            @error('biaya') <div class="text-danger mt-1">{{ $message }}</div> @enderror
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label class="form-label" for="pelaksana">Pelaksana</label>
+                            <label class="form-label" for="keterangan">Keterangan</label>
                             <input
                                 type="text"
-                                class="form-control @error('pelaksana') is-invalid @enderror"
-                                id="pelaksana"
-                                name="pelaksana"
+                                class="form-control @error('keterangan') is-invalid @enderror"
+                                id="keterangan"
+                                name="keterangan"
                                 placeholder="Contoh: Tim Maintenance Internal / Bengkel Jaya Abadi"
-                                value="{{ old('pelaksana') }}"
+                                value="{{ old('keterangan') }}"
                             >
-                            @error('pelaksana') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                            @error('keterangan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mt-4 flex gap-2">
-                            <button type="submit" class="btn btn-primary">Simpan Riwayat Pemeliharaan</button>
-                            <a href="{{ route('pemeliharaanAset.index') }}" class="btn btn-secondary">Batal / Kembali</a>
+                            <button type="submit" class="btn btn-primary">Simpan Riwayat Mutasi</button>
+                            <a href="{{ route('mutasiAset.index') }}" class="btn btn-secondary">Batal / Kembali</a>
                         </div>
                     </form>
                 </div>

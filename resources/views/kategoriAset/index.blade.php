@@ -7,21 +7,21 @@
 <div class="grid grid-cols-12 gap-x-6">
 
         <div class="col-span-12 mb-4 d-flex justify-content-between align-items-center">
-            
+
             <div style="width: 50%;">
                 <form method="GET" action="{{ route('kategoriAset.index') }}" class="d-flex align-items-center gap-2">
-                    
-                    <input 
-                        type="text" 
-                        name="search" 
-                        class="form-control" 
-                        placeholder="Cari Nama atau Kode..." 
-                        value="{{ $searchTerm ?? '' }}" 
+
+                    <input
+                        type="text"
+                        name="search"
+                        class="form-control"
+                        placeholder="Cari Nama atau Kode..."
+                        value="{{ $searchTerm ?? '' }}"
                         style="width: 250px;"
                     >
                     <br>
                     <button type="submit" class="btn btn-secondary">Cari</button>
-                    
+
                     @if ($searchTerm)
                         <a href="{{ route('kategoriAset.index') }}" class="btn btn-sm btn-outline-danger">Reset</a>
                     @endif
@@ -63,7 +63,6 @@
                                     <td>
                                         <a href="{{ route('kategoriAset.edit', $item->kategori_id) }}" class="btn btn-sm btn-warning">Edit</a>
 
-                                        {{-- Tombol HAPUS (Gunakan Form tersembunyi) --}}
                                         <form action="{{ route('kategoriAset.destroy', $item->kategori_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data {{ $item->nama }}?');">
                                             @csrf
                                             @method('DELETE')

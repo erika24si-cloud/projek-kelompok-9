@@ -85,7 +85,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- LOOPING DATA DARI VARIABEL $wargaTerbaru --}}
                             @forelse($wargaTerbaru as $warga)
                             <tr>
                                 <td class="py-2 px-4">{{ $warga->no_ktp }}</td>
@@ -93,7 +92,7 @@
                                 <td class="py-2 px-4">
                                     <a href="{{ route('warga.edit', $warga->warga_id) }}" class="badge bg-yellow-500 text-white text-[12px] mx-1">Edit</a>
                                     <a href="{{ route('warga.destroy', $warga->warga_id) }}" class="badge bg-red-500 text-white text-[12px] mx-1">Hapus</a>
-                                </td> 
+                                </td>
                             </tr>
                             @empty
                             <tr>
@@ -145,7 +144,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 @endsection
 

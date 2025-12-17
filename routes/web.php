@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\lokasiAsetController;
 use App\Http\Controllers\pemeliharaanAsetController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\mutasiAsetController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,8 +53,8 @@ Route::post('auth/logout', [AuthController::class, 'logout'] )->name('auth.logou
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
-Route::resource('user', UserController::class);
-//->middleware('checkislogin');
+Route::resource('user', UserController::class)
+->middleware('checkislogin');
 
 //Route::resource('user', UserController::class)
 //->middleware('checkrole:Super Admin');
@@ -61,3 +62,4 @@ Route::resource('user', UserController::class);
 
 Route::resource('lokasiAset', lokasiAsetController::class);
 Route::resource('pemeliharaanAset', pemeliharaanAsetController::class);
+Route::resource('mutasiAset', mutasiAsetController::class);

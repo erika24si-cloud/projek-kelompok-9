@@ -4,7 +4,6 @@
 
 @section('content')
 
-    {{-- Tampilkan pesan error validasi di bagian atas jika ada --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -23,11 +22,9 @@
                 </div>
 
                 <div class="card-body">
-                    {{-- Form mengarah ke metode store() di UserController --}}
                     <form method="POST" action="{{ route('user.store') }}">
                         @csrf
 
-                        {{-- 1. NAMA --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="name">Nama Lengkap</label>
                             <input
@@ -41,8 +38,7 @@
                             >
                             @error('name') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
-                        
-                        {{-- 3. ROLE --}}
+
                         <div class="form-group mb-4">
                             <label class="form-label" for="role">Hak Akses (Role)</label>
                             <select
@@ -52,8 +48,7 @@
                                 required
                             >
                                 <option value="">-- Pilih Role --</option>
-                                {{-- Daftar Role umum, sesuaikan dengan database Anda --}}
-                                @foreach(['admin', 'operator', 'viewer'] as $role)
+                                @foreach(['admin', 'guest'] as $role)
                                     <option
                                         value="{{ $role }}"
                                         {{ old('role') == $role ? 'selected' : '' }}
@@ -65,7 +60,6 @@
                             @error('role') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- 2. EMAIL --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="email">Alamat Email</label>
                             <input
@@ -80,7 +74,6 @@
                             @error('email') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- 4. PASSWORD --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="password">Password</label>
                             <input
@@ -92,8 +85,7 @@
                             >
                             @error('password') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
-                        
-                        {{-- 5. KONFIRMASI PASSWORD --}}
+
                         <div class="form-group mb-4">
                             <label class="form-label" for="password_confirmation">Konfirmasi Password</label>
                             <input

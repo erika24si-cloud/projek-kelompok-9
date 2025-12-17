@@ -4,7 +4,6 @@
 
 @section('content')
 
-    {{-- Tampilkan pesan error validasi di bagian atas jika ada --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -23,7 +22,6 @@
                 </div>
 
                 <div class="card-body">
-                    {{-- Form mengarah ke metode update() dan menggunakan @method('PUT') --}}
                     <form
                         method="POST"
                         action="{{ route('kategoriAset.update', $kategoriAset->kategori_id) }}"

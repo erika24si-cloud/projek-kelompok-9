@@ -2,7 +2,7 @@
   <div class="navbar-wrapper">
     <div class="m-header flex items-center py-4 px-6 h-header-height">
       <a href="{{ route('dashboard') }}" class="b-brand flex items-center gap-3">
-      <span> <img src="{{ asset('assets/images/logo-white.svg') }}" alt="logo" /> </span>       
+      <span> <img src="{{ asset('assets/images/logo-white.svg') }}" alt="logo" /> </span>
       </a>
     </div>
     <div class="navbar-content h-[calc(100vh_-_74px)] py-2.5">
@@ -74,6 +74,14 @@
           </a>
         </li>
 
+        <li class="pc-item">
+          <a href="{{ route('mutasiAset.index') }}" class="pc-link">
+            <span class="pc-micon">
+              <i data-feather="map-pin"></i>
+            </span>
+            <span class="pc-mtext">Mutasi Aset</span>
+          </a>
+        </li>
 
         <li class="pc-item pc-caption">
           <label>Pages</label>
