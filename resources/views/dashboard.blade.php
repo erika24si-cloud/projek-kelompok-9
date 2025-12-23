@@ -6,50 +6,50 @@
 
 
     <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="{{ asset('assets/img/carousel-1.jpg') }}" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-lg-7">
-                                    <h1 class="display-2 mb-5 animated slideInDown">Organic Food Is Good For Health</h1>
-                                    <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Products</a>
-                                    <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('assets/img/carousel-2.jpg') }}" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="container">
-                            <div class="row justify-content-start">
-                                <div class="col-lg-7">
-                                    <h1 class="display-2 mb-5 animated slideInDown">Natural Food Is Always Healthy</h1>
-                                    <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Products</a>
-                                    <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
+      <div class="container-fluid p-0 mb-5 wow fadeIn" data-wow-delay="0.1s">
+          <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <img class="w-100" src="{{ asset('assets/img/carousel-1.jpg') }}" alt="Image">
+                      <div class="carousel-caption">
+                          <div class="container">
+                              <div class="row justify-content-start">
+                                  <div class="col-lg-7">
+                                      <h1 class="display-2 mb-5 animated slideInDown">Organic Food Is Good For Health</h1>
+                                      <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Products</a>
+                                      <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                      <img class="w-100" src="{{ asset('assets/img/carousel-2.jpg') }}" alt="Image">
+                      <div class="carousel-caption">
+                          <div class="container">
+                              <div class="row justify-content-start">
+                                  <div class="col-lg-7">
+                                      <h1 class="display-2 mb-5 animated slideInDown">Natural Food Is Always Healthy</h1>
+                                      <a href="" class="btn btn-primary rounded-pill py-sm-3 px-sm-5">Products</a>
+                                      <a href="" class="btn btn-secondary rounded-pill py-sm-3 px-sm-5 ms-3">Services</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+      </div>
     <!-- Carousel End -->
 
 
@@ -117,189 +117,189 @@
     <!-- Product Start -->
     <div class="container">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div> 
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div> 
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
-      <div class="card-content">
-        <div class="card-header">
-          <span class="category-badge">Elektronik</span>
-          <span class="asset-code">#AST-001</span>
-        </div>
-        <p class="card-description">
-          MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
-        </p>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=60" alt="Laptop" class="card-image">
+        <div class="card-content">
+          <div class="card-header">
+            <span class="category-badge">Elektronik</span>
+            <span class="asset-code">#AST-001</span>
+          </div>
+          <p class="card-description">
+            MacBook Pro M1 2020. Digunakan tim desain grafis. Lengkap dengan charger original.
+          </p>
 
-        <div class="card-actions">
-          <button class="btn-icon btn-edit" title="Edit Data">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-          </button>
-          
-          <button class="btn-icon btn-delete" title="Hapus Data">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-          </button>
-        </div>
-        </div>
-    </div>
+          <div class="card-actions">
+            <button class="btn-icon btn-edit" title="Edit Data">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            </button>
+            
+            <button class="btn-icon btn-delete" title="Hapus Data">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+            </button>
+          </div>
+          </div>
+      </div>
 
   </div>
     <!-- Product End -->
