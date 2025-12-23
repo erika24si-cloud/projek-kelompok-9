@@ -2,13 +2,16 @@
   <div class="navbar-wrapper">
     <div class="m-header flex items-center py-4 px-6 h-header-height">
       <a href="{{ route('dashboard') }}" class="b-brand flex items-center gap-3">
-      <span> <img src="{{ asset('assets/images/logo-white.svg') }}" alt="logo" /> </span>
-      </a>
+   <div class="b-bg">
+       <i class="feather icon-trending-up text-white"></i>
+   </div>
+   <span class="text-white font-semibold text-lg">Bina Desa</span>
+</a>
     </div>
     <div class="navbar-content h-[calc(100vh_-_74px)] py-2.5">
       <ul class="pc-navbar">
         <li class="pc-item pc-caption">
-          <label>Navigation</label>
+          <label>Home</label>
         </li>
         <li class="pc-item">
           <a href="{{ route('dashboard') }}" class="pc-link">
@@ -22,7 +25,7 @@
          <li class="pc-item">
           <a href="{{ route('user.index') }}" class="pc-link">
             <span class="pc-micon">
-              <i data-feather="eye"></i>
+              <i data-feather="users"></i>
             </span>
             <span class="pc-mtext">User</span>
           </a>
@@ -68,7 +71,7 @@
          <li class="pc-item">
           <a href="{{ route('pemeliharaanAset.index') }}" class="pc-link">
             <span class="pc-micon">
-              <i data-feather="map-pin"></i>
+              <i data-feather="settings"></i>
             </span>
             <span class="pc-mtext">Pemeliharaan Aset</span>
           </a>
@@ -77,40 +80,13 @@
         <li class="pc-item">
           <a href="{{ route('mutasiAset.index') }}" class="pc-link">
             <span class="pc-micon">
-              <i data-feather="map-pin"></i>
+              <i data-feather="repeat"></i>
             </span>
             <span class="pc-mtext">Mutasi Aset</span>
           </a>
         </li>
 
-        <li class="pc-item pc-caption">
-          <label>Pages</label>
-          <i data-feather="monitor"></i>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="{{ route('login') }}" class="pc-link" target="_blank">
-            <span class="pc-micon"> <i data-feather="lock"></i></span>
-            <span class="pc-mtext">Login</span>
-          </a>
-        </li>
-        <li class="pc-item pc-hasmenu">
-          <a href="{{ route('register') }}" class="pc-link" target="_blank">
-            <span class="pc-micon"> <i data-feather="user-plus"></i></span>
-            <span class="pc-mtext">Register</span>
-          </a>
-        </li>
-        <li class="pc-item pc-caption">
-          <label>Other</label>
-          <i data-feather="sidebar"></i>
-        </li>
-
-        <li class="pc-item">
-  <a href="{{ route('sample.page') }}" class="pc-link">
-    <span class="pc-micon">
-      <i data-feather="sidebar"></i>
-    </span>
-            <span class="pc-mtext">Sample page</span>
-          </a>
+        
         </li>
       </ul>
     </div>

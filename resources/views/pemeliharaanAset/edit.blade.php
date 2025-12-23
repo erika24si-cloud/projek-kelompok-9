@@ -22,9 +22,11 @@
                 </div>
 
                 <div class="card-body">
+                    {{-- TAMBAHAN: enctype wajib untuk upload file --}}
                     <form
                         method="POST"
                         action="{{ route('pemeliharaanAset.update', $pemeliharaanAset->pemeliharaan_id) }}"
+                        enctype="multipart/form-data"
                     >
                         @csrf
                         @method('PUT')
@@ -103,6 +105,35 @@
                                 value="{{ old('pelaksana', $pemeliharaanAset->pelaksana) }}"
                             >
                             @error('pelaksana') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
+                        {{-- TAMBAHAN: PREVIEW & INPUT MEDIA PEMELIHARAAN --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="media">Bukti Pembayaran / Media</label>
+                            
+                            {{-- Tampilkan bukti lama jika ada --}}
+                            @if($pemeliharaanAset->media)
+                                <div class="mb-3">
+                                    <p class="text-sm text-muted">Bukti saat ini:</p>
+                                    <a href="{{ asset('storage/' . $pemeliharaanAset->media) }}" target="_blank">
+                                        <img src="{{ asset('storage/' . $pemeliharaanAset->media) }}" 
+                                             alt="Bukti Media" 
+                                             style="max-width: 200px; border-radius: 8px;" 
+                                             class="shadow-sm border">
+                                    </a>
+                                    <br><small class="text-info">*Klik gambar untuk memperbesar</small>
+                                </div>
+                            @endif
+
+                            <input 
+                                type="file" 
+                                name="media" 
+                                id="media" 
+                                class="form-control @error('media') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Pilih file baru jika ingin mengganti bukti. Format: JPG, PNG. Maks 2MB.</small>
+                            @error('media') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mt-4 flex gap-2">

@@ -43,19 +43,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // --- 1. TAMBAH VALIDASI ---
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
-            'role' => ['required', Rule::in(['admin', 'operator', 'viewer'])],
+            'role' => ['required', Rule::in(['admin', 'guest'])],
+            'profile'  => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         $data['name'] = $request->name;
-        $data['role'] = $request->role;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password); 
+        $data['role'] = $request->role;
 
+      if ($request->hasFile('profile')) {
+            $data['profile'] = $request->file('profile')->store('profile-user', 'public');
+        }
         User::create($data);
 
         return redirect()->route('user.index')->with('success', 'Penambahan Data Berhasil!');
@@ -85,12 +88,12 @@ class UserController extends Controller
     {
        $user = User::findOrFail($id);
         
-        // --- 2. TAMBAH VALIDASI UPDATE ---
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)], 
-            'password' => 'nullable|string|min:8|confirmed', // 'nullable' karena opsional
-            'role' => ['required', Rule::in(['admin', 'operator', 'viewer'])],
+            'password' => 'nullable|string|min:8|confirmed', 
+            'role' => ['required', Rule::in(['admin', 'guest'])],
+            'profile'  => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         $user->name = $request->name;
@@ -99,6 +102,13 @@ class UserController extends Controller
         
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password); 
+        }
+
+       if ($request->hasFile('profile')) {
+            if ($user->profile) {
+                Storage::disk('public')->delete($user->profile);
+            }
+            $user->profile = $request->file('profile')->store('profile-user', 'public');
         }
 
         $user->save();
@@ -115,4 +125,16 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('user.index')->with('success', 'Hapus Data Berhasil!');
     }
+
+    public function hapusFoto(string $id)
+{
+    $user = User::findOrFail($id);
+    if ($user->profile && \Storage::disk('public')->exists($user->profile)) {
+        \Storage::disk('public')->delete($user->profile);
+    }
+    $user->profile = '';
+    $user->save();
+
+    return redirect()->back()->with('success', 'Foto profil berhasil dihapus!');
+}
 }

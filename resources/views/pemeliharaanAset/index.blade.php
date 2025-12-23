@@ -7,10 +7,8 @@
 <div class="grid grid-cols-12 gap-x-6">
 
     <div class="col-span-12 mb-4 d-flex justify-content-between align-items-center">
-
         <div style="width: 50%;">
             <form method="GET" action="{{ route('pemeliharaanAset.index') }}" class="d-flex align-items-center gap-2">
-
                 <input
                     type="text"
                     name="search"
@@ -39,51 +37,62 @@
                 <h5>Data Riwayat Pemeliharaan Aset</h5>
             </div>
 
-            <div class="card-body">
-                @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Bukti Media</th> 
+                            <th>ID Aset</th>
+                            <th>Tanggal</th>
+                            <th>Tindakan</th>
+                            <th>Biaya</th>
+                            <th>Pelaksana</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($pemeliharaanAset as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            
+                            {{-- Kolom Menampilkan Bukti Media (Kwitansi/Hasil) --}}
+                            <td>
+                                @if($item->media)
+                                    <a href="{{ asset('storage/' . $item->media) }}" target="_blank">
+                                        <img src="{{ asset('storage/' . $item->media) }}" 
+                                             alt="Bukti Pemeliharaan" 
+                                             style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;" 
+                                             class="img-thumbnail">
+                                    </a>
+                                @else
+                                    <span class="text-muted" style="font-size: 0.8rem;">Tidak ada bukti</span>
+                                @endif
+                            </td>
 
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>ID Aset</th>
-                                <th>Tanggal</th>
-                                <th>Tindakan</th>
-                                <th>Biaya</th>
-                                <th>Pelaksana</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($pemeliharaanAset as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->aset_id }}</td>
-                                <td>{{ $item->tanggal->format('d/m/Y') }}</td>
-                                <td>{{ Str::limit($item->tindakan, 50) }}</td>
-                                <td>Rp {{ number_format($item->biaya, 0, ',', '.') }}</td>
-                                <td>{{ $item->pelaksana }}</td>
-                                <td>
-                                    <a href="{{ route('pemeliharaanAset.edit', $item->pemeliharaan_id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <td>{{ $item->aset_id }}</td>
+                            <td>{{ $item->tanggal->format('d/m/Y') }}</td>
+                            <td>{{ Str::limit($item->tindakan, 50) }}</td>
+                            <td>Rp {{ number_format($item->biaya, 0, ',', '.') }}</td>
+                            <td>{{ $item->pelaksana }}</td>
+                            <td>
+                                <a href="{{ route('pemeliharaanAset.edit', $item->pemeliharaan_id) }}" class="btn btn-sm btn-warning">Edit</a>
 
-                                    <form action="{{ route('pemeliharaanAset.destroy', $item->pemeliharaan_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus riwayat pemeliharaan pada tanggal {{ $item->tanggal->format('d/m/Y') }}?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="7" class="text-center">Belum ada riwayat Pemeliharaan Aset yang tersimpan.</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+                                <form action="{{ route('pemeliharaanAset.destroy', $item->pemeliharaan_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus riwayat pemeliharaan pada tanggal {{ $item->tanggal->format('d/m/Y') }}?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            {{-- Colspan diubah menjadi 8 karena tambah 1 kolom --}}
+                            <td colspan="8" class="text-center">Belum ada riwayat Pemeliharaan Aset yang tersimpan.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

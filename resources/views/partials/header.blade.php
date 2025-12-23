@@ -210,9 +210,24 @@
                         <div class="dropdown-header flex items-center justify-between py-4 px-5 bg-primary-500">
                             <div class="flex mb-1 items-center">
                                 <div class="shrink-0">
-                                    <img src="{{ asset('assets/images/user/avatar-2.jpg') }}" alt="user-image"
-                                        class="w-10 rounded-full" />
-                                </div>
+    @php
+        $profile = Auth::user()->profile;
+        // Cek apakah isinya URL (inisial) atau path file (upload)
+        $isUrl = str_contains($profile, 'http');
+        $profileSrc = $isUrl ? $profile : asset('storage/' . $profile);
+    @endphp
+
+    @if($profile)
+        <img src="{{ $profileSrc }}" 
+             alt="user-image"
+             class="w-10 h-10 rounded-full object-cover shadow-sm border" />
+    @else
+        {{-- Backup jika seandainya kolom profile di database kosong --}}
+        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random&color=fff" 
+             alt="user-image"
+             class="w-10 h-10 rounded-full object-cover shadow-sm border" />
+    @endif
+</div>
                                 <div class="grow ms-3">
                                     @if (auth()->check())
                                         <h6 class="mb-1 text-white">

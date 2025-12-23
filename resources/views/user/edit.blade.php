@@ -26,9 +26,46 @@
                     <form
                         method="POST"
                         action="{{ route('user.update', $users->id) }}"
+                        enctype="multipart/form-data"
                     >
                         @csrf
                         @method('PUT')
+
+                        {{-- PREVIEW & INPUT FOTO PROFIL --}}
+                        <div class="form-group mb-4 text-center">
+                            <label class="form-label d-block text-left">Foto Profil</label>
+                            
+                            <div class="mb-3">
+                                @if($users->profile)
+                                    <img src="{{ asset('storage/' . $users->profile) }}" 
+                                         alt="Profile Photo" 
+                                         style="width: 120px; height: 120px; object-fit: cover;" 
+                                         class="rounded-circle img-thumbnail shadow-sm">
+                                    
+                                    {{-- Tombol Hapus Foto Saja --}}
+                                    <div class="mt-2">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" 
+                                                onclick="if(confirm('Apakah Anda yakin ingin menghapus foto profil saja?')) { document.getElementById('form-hapus-foto').submit(); }">
+                                            Hapus Foto Profil
+                                        </button>
+                                    </div>
+                                @else
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($users->name) }}&background=random&color=fff" 
+                                         alt="Default Avatar" 
+                                         style="width: 120px; height: 120px;" 
+                                         class="rounded-circle img-thumbnail shadow-sm">
+                                @endif
+                            </div>
+
+                            <input 
+                                type="file" 
+                                name="profile" 
+                                class="form-control @error('profile') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Pilih file baru jika ingin mengganti foto profil. Format: JPG, PNG. Maks 2MB.</small>
+                            @error('profile') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
 
                         <div class="form-group mb-4">
                             <label class="form-label" for="user_name">Nama Pengguna</label>
@@ -45,7 +82,7 @@
                         </div>
 
                         <div class="form-group mb-4">
-                            <label class="form-label" for="users_email">Alamat Email</label>
+                            <label class="form-label" for="user_email">Alamat Email</label>
                             <input
                                 type="email"
                                 class="form-control @error('email') is-invalid @enderror"
@@ -93,7 +130,6 @@
                                 <option value="">Pilih Peran</option>
                                 <option value="admin" {{ old('role', $users->role) == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="guest" {{ old('role', $users->role) == 'guest' ? 'selected' : '' }}>Guest</option>
-
                             </select>
                             @error('role') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
@@ -104,6 +140,15 @@
                             <a href="{{ route('user.index') }}" class="btn btn-secondary">Batal / Kembali</a>
                         </div>
                     </form>
+
+                    {{-- Form Tersembunyi untuk Aksi Hapus Foto Saja --}}
+                    @if($users->profile)
+                        <form id="form-hapus-foto" action="{{ route('user.hapus-foto', $users->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('PUT')
+                        </form>
+                    @endif
+
                 </div>
             </div>
         </div>

@@ -22,8 +22,21 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('user.store') }}">
+                    {{-- TAMBAHAN: enctype wajib ada untuk upload profile --}}
+                    <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">Foto Profil</label>
+                            <input 
+                                type="file" 
+                                name="profile" 
+                                class="form-control @error('profile') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Format: JPG, PNG. Maksimal 2MB.</small>
+                            @error('profile') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
 
                         <div class="form-group mb-4">
                             <label class="form-label" for="name">Nama Lengkap</label>
@@ -48,7 +61,7 @@
                                 required
                             >
                                 <option value="">-- Pilih Role --</option>
-                                @foreach(['admin', 'guest'] as $role)
+                                @foreach(['admin', 'guest'] as $role) 
                                     <option
                                         value="{{ $role }}"
                                         {{ old('role') == $role ? 'selected' : '' }}

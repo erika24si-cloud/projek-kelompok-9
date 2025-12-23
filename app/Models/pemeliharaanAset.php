@@ -15,6 +15,7 @@ class pemeliharaanAset extends Model
         'tindakan',
         'biaya',
         'pelaksana',
+         'media'
     ];
     
     protected $casts = [

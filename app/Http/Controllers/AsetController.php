@@ -48,7 +48,13 @@ class AsetController extends Controller
         $data['tgl_perolehan']   = $request->tgl_perolehan;
         $data['nilai_perolehan'] = $request->nilai_perolehan;
         $data['kondisi']         = $request->kondisi;
-        aset::create($data);
+
+        if ($request->hasFile('media') && $request->file('media')->isValid()) {
+        $path = $request->file('media')->store('aset', 'public');
+        $data['media'] = $path;
+    }
+    
+        Aset::create($data);
         return redirect()->route('aset.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
@@ -83,7 +89,13 @@ class AsetController extends Controller
         $aset->tgl_perolehan   = $request->tgl_perolehan;
         $aset->nilai_perolehan = $request->nilai_perolehan;
         $aset->kondisi         = $request->kondisi;
-
+        if ($request->hasFile('media')) {
+        if ($aset->media && \Storage::disk('public')->exists($aset->media)) {
+            \Storage::disk('public')->delete($aset->media);
+        }
+        $path = $request->file('media')->store('aset-media', 'public');
+        $aset->media = $path;
+    }
         $aset->save();
         return redirect()->route('aset.index')->with('update', 'Perubahan Data Berhasil!');
     }

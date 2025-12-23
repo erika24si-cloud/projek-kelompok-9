@@ -17,14 +17,14 @@
                     <div class="card sm:my-12 w-full shadow-none">
                         <div class="card-body !p-10">
                             <div class="text-center mb-8">
-                                <a href="{{ route('warga.index') }}">
+                                <a href="{{ route('login') }}">
                                     <img src="{{ asset('assets/images/logo-dark.svg') }}" alt="img" class="mx-auto auth-logo"/>
                                 </a>
                             </div>
                             <h4 class="text-center font-medium mb-4">Login</h4>
                             
                             
-                            <form method="GET" action="{{ route('auth.login') }}">
+                            <form method="POST" action="{{ route('login.post') }}">
                                 @csrf
                                 
                                 <div class="mb-4">
@@ -56,8 +56,8 @@
 
                             <div class="flex justify-between items-end flex-wrap mt-4">
                                 <h6 class="font-medium mb-0">Don't have an Account?</h6>
-                                {{-- Tautan Create Account: Menggunakan route('register') --}}
-                                <a href="{{ route('register') }}" class="text-primary-500">Create Account</a>
+                                {{-- Tautan Create Account: Menggunakan route('auth.register') --}}
+                                <a href="{{ route('auth.register') }}" class="text-primary-500">Create Account</a>
                             </div>
 
                         </div>

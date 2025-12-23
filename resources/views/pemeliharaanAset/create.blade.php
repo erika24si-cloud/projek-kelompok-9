@@ -22,7 +22,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('pemeliharaanAset.store') }}">
+                    {{-- TAMBAHAN: enctype wajib agar file bisa terkirim ke controller --}}
+                    <form method="POST" action="{{ route('pemeliharaanAset.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group mb-4">
@@ -100,6 +101,21 @@
                             >
                             @error('pelaksana') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
+
+                        {{-- TAMBAHAN: Input Media untuk Bukti Pemeliharaan --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="media">Bukti Pembayaran / Media (Opsional)</label>
+                            <input 
+                                type="file" 
+                                name="media" 
+                                id="media" 
+                                class="form-control @error('media') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Format: JPG, PNG. Maks 2MB. (Contoh: Foto kuitansi atau hasil perbaikan)</small>
+                            @error('media') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
 
                         <div class="mt-4 flex gap-2">
                             <button type="submit" class="btn btn-primary">Simpan Riwayat Pemeliharaan</button>

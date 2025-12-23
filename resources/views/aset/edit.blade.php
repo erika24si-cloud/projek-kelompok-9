@@ -4,7 +4,6 @@
 
 @section('content')
 
-    {{-- Tampilkan pesan error validasi di bagian atas jika ada --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -23,18 +22,18 @@
                 </div>
                 
                 <div class="card-body">
-                    {{-- Form mengarah ke metode update() dengan aset_id --}}
+                    {{-- TAMBAHAN: enctype wajib ada untuk upload file --}}
                     <form 
                         method="POST" 
                         action="{{ route('aset.update', $aset->aset_id) }}"
+                        enctype="multipart/form-data"
                     >
                         @csrf 
-                        @method('PUT') {{-- WAJIB: Menggunakan metode PUT untuk update --}}
+                        @method('PUT') 
                         
-                        {{-- 1. PILIH KATEGORI (Foreign Key) --}}
+                        {{-- 1. PILIH KATEGORI --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="kategori_id">Kategori Aset</label>
-                            {{-- $kategoriAsetList diasumsikan dikirim dari AsetController@edit --}}
                             <select 
                                 class="form-control @error('kategori_id') is-invalid @enderror" 
                                 id="kategori_id" 
@@ -45,7 +44,6 @@
                                 @foreach($kategoriAsetList as $kategori)
                                     <option 
                                         value="{{ $kategori->kategori_id }}"
-                                        {{-- Logika untuk mempertahankan nilai lama atau nilai database --}}
                                         {{ old('kategori_id', $aset->kategori_id) == $kategori->kategori_id ? 'selected' : '' }}
                                     >
                                         {{ $kategori->nama }} ({{ $kategori->kode }})
@@ -53,6 +51,32 @@
                                 @endforeach
                             </select>
                             @error('kategori_id') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
+                        {{-- TAMBAHAN: MEDIA/FOTO SECTION --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="media">Media / Foto Aset</label>
+                            
+                            {{-- Tampilkan preview foto lama jika ada --}}
+                            @if($aset->media)
+                                <div class="mb-3">
+                                    <p class="text-sm text-muted">Media saat ini:</p>
+                                    <img src="{{ asset('storage/' . $aset->media) }}" 
+                                         alt="Media Lama" 
+                                         style="max-width: 200px; border-radius: 8px;" 
+                                         class="shadow-sm">
+                                </div>
+                            @endif
+
+                            <input 
+                                type="file" 
+                                name="media" 
+                                id="media" 
+                                class="form-control @error('media') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Pilih file baru jika ingin mengganti media. Format: JPG, PNG. Maks 2MB.</small>
+                            @error('media') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         {{-- 2. KODE ASET --}}
@@ -63,8 +87,6 @@
                                 class="form-control @error('kode_aset') is-invalid @enderror" 
                                 id="kode_aset" 
                                 name="kode_aset"
-                                placeholder="Contoh: ELE-2025-001" 
-                                {{-- Memuat data lama atau data database --}}
                                 value="{{ old('kode_aset', $aset->kode_aset) }}"
                                 required
                             >
@@ -79,7 +101,6 @@
                                 class="form-control @error('nama_aset') is-invalid @enderror" 
                                 id="nama_aset" 
                                 name="nama_aset"
-                                placeholder="Contoh: Laptop Kerja Lenovo T14" 
                                 value="{{ old('nama_aset', $aset->nama_aset) }}"
                                 required
                             >
@@ -108,7 +129,6 @@
                                 class="form-control @error('nilai_perolehan') is-invalid @enderror" 
                                 id="nilai_perolehan" 
                                 name="nilai_perolehan"
-                                placeholder="Contoh: 15000000" 
                                 value="{{ old('nilai_perolehan', $aset->nilai_perolehan) }}"
                                 min="0"
                                 step="0.01"
@@ -130,7 +150,6 @@
                                 @foreach(['baik', 'rusak', 'perbaikan'] as $kondisi)
                                     <option 
                                         value="{{ $kondisi }}"
-                                        {{-- Logika untuk mempertahankan nilai lama atau nilai database --}}
                                         {{ old('kondisi', $aset->kondisi) == $kondisi ? 'selected' : '' }}
                                     >
                                         {{ ucfirst($kondisi) }}

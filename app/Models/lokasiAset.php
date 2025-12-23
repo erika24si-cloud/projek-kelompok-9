@@ -15,6 +15,7 @@ class lokasiAset extends Model
         'lokasi_text',
         'rt',
         'rw',
+        'media'
     ];
 
     public function aset(): BelongsTo

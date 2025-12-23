@@ -2,9 +2,7 @@
   <label>Navigation</label>
 </li>
 
-{{-- DASHBOARD --}}
 <li class="pc-item">
-  {{-- Gunakan route('dashboard') yang harus Anda definisikan di routes/web.php --}}
   <a href="{{ route('dashboard') }}" class="pc-link">
     <span class="pc-micon">
       <i data-feather="home"></i>

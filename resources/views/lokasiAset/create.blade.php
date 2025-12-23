@@ -22,7 +22,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('lokasiAset.store') }}">
+                    {{-- TAMBAHAN: enctype wajib ada agar file media bisa terkirim --}}
+                    <form method="POST" action="{{ route('lokasiAset.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group mb-4">
@@ -36,15 +37,16 @@
                                 <option value="">-- Pilih Aset yang akan Diberi Lokasi --</option>
                                 @foreach($asetList as $aset)
                                     <option
-    value="{{ $aset->aset_id }}"
-    {{ old('aset_id') == $aset->aset_id ? 'selected' : '' }}
->
-    {{ $aset->nama_aset }} ({{ $aset->kode_aset }})
-</option>
+                                        value="{{ $aset->aset_id }}"
+                                        {{ old('aset_id') == $aset->aset_id ? 'selected' : '' }}
+                                    >
+                                        {{ $aset->nama_aset }} ({{ $aset->kode_aset }})
+                                    </option>
                                 @endforeach
                             </select>
                             @error('aset_id') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
+
 
                         <div class="form-group mb-4">
                             <label class="form-label" for="keterangan">Keterangan Lokasi</label>
@@ -53,7 +55,7 @@
                                 id="keterangan"
                                 name="keterangan"
                                 rows="3"
-                                placeholder="Contoh: Terletak di Ruang Server Lantai 2, dalam Rak B. (Maks 255 Karakter)"
+                                placeholder="Contoh: Terletak di Ruang Server Lantai 2, dalam Rak B."
                                 required
                             >{{ old('keterangan') }}</textarea>
                             @error('keterangan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
@@ -101,6 +103,19 @@
                             </div>
                         </div>
 
+                        {{-- TAMBAHAN: Input Media untuk Foto Lokasi --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="media">Foto / Denah Lokasi</label>
+                            <input 
+                                type="file" 
+                                name="media" 
+                                id="media" 
+                                class="form-control @error('media') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Opsional. Format: JPG, PNG. Maks 2MB.</small>
+                            @error('media') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
 
                         <div class="mt-4 flex gap-2">
                             <button type="submit" class="btn btn-primary">Simpan Lokasi Aset</button>

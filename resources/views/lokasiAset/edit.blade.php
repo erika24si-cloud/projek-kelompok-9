@@ -4,17 +4,6 @@
 
 @section('content')
 
-    {{-- Tampilkan pesan error validasi di bagian atas jika ada --}}
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="card">
@@ -26,11 +15,12 @@
                     <form
                         method="POST"
                         action="{{ route('lokasiAset.update', $lokasiAset->lokasi_id) }}"
+                        enctype="multipart/form-data"
                     >
                         @csrf
                         @method('PUT')
 
-                        {{-- 1. PILIH ASET (Foreign Key) --}}
+                        {{-- 1. PILIH ASET --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="aset_id">Pilih Aset</label>
                             <select
@@ -60,13 +50,12 @@
                                 id="keterangan"
                                 name="keterangan"
                                 rows="3"
-                                placeholder="Contoh: Terletak di Ruang Server Lantai 2, dalam Rak B."
                                 required
                             >{{ old('keterangan', $lokasiAset->keterangan) }}</textarea>
                             @error('keterangan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- 3. LOKASI TEXT (Nama Lokasi Umum) --}}
+                        {{-- 3. LOKASI TEXT --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="lokasi_text">Nama Tempat / Lokasi Umum</label>
                             <input
@@ -74,7 +63,6 @@
                                 class="form-control @error('lokasi_text') is-invalid @enderror"
                                 id="lokasi_text"
                                 name="lokasi_text"
-                                placeholder="Contoh: Gedung A, Lantai 2, Ruang Server"
                                 value="{{ old('lokasi_text', $lokasiAset->lokasi_text) }}"
                                 required
                             >
@@ -90,7 +78,6 @@
                                     class="form-control @error('rt') is-invalid @enderror"
                                     id="rt"
                                     name="rt"
-                                    placeholder="Contoh: 001"
                                     value="{{ old('rt', $lokasiAset->rt) }}"
                                 >
                                 @error('rt') <div class="text-danger mt-1">{{ $message }}</div> @enderror
@@ -103,13 +90,37 @@
                                     class="form-control @error('rw') is-invalid @enderror"
                                     id="rw"
                                     name="rw"
-                                    placeholder="Contoh: 002"
                                     value="{{ old('rw', $lokasiAset->rw) }}"
                                 >
                                 @error('rw') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                             </div>
                         </div>
 
+                        {{-- TAMBAHAN: PREVIEW & INPUT MEDIA LOKASI --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="media">Media / Foto Lokasi</label>
+                            
+                            {{-- Tampilkan foto lokasi lama jika ada --}}
+                            @if($lokasiAset->media)
+                                <div class="mb-3">
+                                    <p class="text-sm text-muted">Foto lokasi saat ini:</p>
+                                    <img src="{{ asset('storage/' . $lokasiAset->media) }}" 
+                                         alt="Media Lokasi" 
+                                         style="max-width: 250px; border-radius: 8px;" 
+                                         class="shadow-sm border">
+                                </div>
+                            @endif
+
+                            <input 
+                                type="file" 
+                                name="media" 
+                                id="media" 
+                                class="form-control @error('media') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Pilih file baru jika ingin mengganti foto lokasi. Format: JPG, PNG. Maks 2MB.</small>
+                            @error('media') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
 
                         <div class="mt-4 flex gap-2">
                             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

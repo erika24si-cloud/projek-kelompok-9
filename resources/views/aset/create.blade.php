@@ -22,7 +22,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('aset.store') }}">
+                    {{-- TAMBAHAN: enctype="multipart/form-data" wajib ada untuk upload file --}}
+                    <form method="POST" action="{{ route('aset.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group mb-4">
@@ -46,21 +47,8 @@
                             @error('kategori_id') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        <div class="form-group mb-4">
-                            <label class="form-label" for="kode_aset">Kode Aset (Otomatis/Manual)</label>
-                            <input
-                                type="text"
-                                class="form-control @error('kode_aset') is-invalid @enderror"
-                                id="kode_aset"
-                                name="kode_aset"
-                                placeholder="Contoh: ELE-2025-001"
-                                value="{{ old('kode_aset') }}"
-                                required
-                            >
-                            @error('kode_aset') <div class="text-danger mt-1">{{ $message }}</div> @enderror
-                        </div>
 
-                        <div class="form-group mb-4">
+                         <div class="form-group mb-4">
                             <label class="form-label" for="nama_aset">Nama Aset</label>
                             <input
                                 type="text"
@@ -72,6 +60,20 @@
                                 required
                             >
                             @error('nama_aset') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="kode_aset">Kode Aset</label>
+                            <input
+                                type="text"
+                                class="form-control @error('kode_aset') is-invalid @enderror"
+                                id="kode_aset"
+                                name="kode_aset"
+                                placeholder="Contoh: ELE-2025-001"
+                                value="{{ old('kode_aset') }}"
+                                required
+                            >
+                            @error('kode_aset') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="form-group mb-4">
@@ -122,6 +124,20 @@
                                 @endforeach
                             </select>
                             @error('kondisi') <div class="text-danger mt-1">{{ $message }}</div> @enderror
+                        </div>
+
+                          {{-- TAMBAHAN: Input Media/Foto --}}
+                        <div class="form-group mb-4">
+                            <label class="form-label" for="media">Foto Aset</label>
+                            <input 
+                                type="file" 
+                                name="media" 
+                                id="media" 
+                                class="form-control @error('media') is-invalid @enderror"
+                                accept="image/*"
+                            >
+                            <small class="text-muted">Format: JPG, PNG, atau JPEG. Maksimal 2MB.</small>
+                            @error('media') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="mt-4 flex gap-2">

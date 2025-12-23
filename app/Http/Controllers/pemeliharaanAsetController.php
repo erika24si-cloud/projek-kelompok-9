@@ -43,6 +43,10 @@ class pemeliharaanAsetController extends Controller
         $data['tindakan']  = $request->tindakan;
         $data['biaya']     = $request->biaya;
         $data['pelaksana'] = $request->pelaksana;
+        if ($request->hasFile('media') && $request->file('media')->isValid()) {
+        $path = $request->file('media')->store('pemeliharaan-aset', 'public');
+        $data['media'] = $path;
+    }
         PemeliharaanAset::create($data);
         return redirect()->route('pemeliharaanAset.index')->with('success', 'Riwayat Pemeliharaan berhasil ditambahkan!');
     }
@@ -76,6 +80,13 @@ class pemeliharaanAsetController extends Controller
         $pemeliharaanAset->tindakan  = $request->tindakan;
         $pemeliharaanAset->biaya     = $request->biaya;
         $pemeliharaanAset->pelaksana = $request->pelaksana;
+        if ($request->hasFile('media')) {
+        if ($pemeliharaanAset->media && \Storage::disk('public')->exists($pemeliharaanAset->media)) {
+            \Storage::disk('public')->delete($pemeliharaanAset->media);
+        }
+        $path = $request->file('media')->store('pemeliharaan-aset', 'public');
+        $pemeliharaanAset->media = $path;
+    }
 
         $pemeliharaanAset->save();
         return redirect()->route('pemeliharaanAset.index')->with('success', 'Perubahan Riwayat Pemeliharaan berhasil disimpan!');

@@ -17,18 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login-halaman-anda', function () {
-    return view('auth.login');
-})->name('login');
-
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->name('dashboard');
-
-Route::get('/register-halaman-anda', function () {
-    return view('auth.register');
-})->name('register');
-
 Route::get('/logout-halaman-anda', function () {
     return view('auth.logout');
 })->name('logout');
@@ -48,18 +36,23 @@ Route::resource('aset', AsetController::class);
 Route::resource('warga', WargaController::class);
 
 Route::get('auth', [AuthController::class, 'index'] )->name('auth');
-Route::get('auth/login', [AuthController::class, 'login'] )->name('auth.login');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('auth/logout', [AuthController::class, 'logout'] )->name('auth.logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.register');
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register.process');
 
 
-Route::resource('user', UserController::class)
-->middleware('checkislogin');
+Route::resource('user', UserController::class);
+
+//Route::resource('user', UserController::class)
+//->middleware('checkislogin');
 
 //Route::resource('user', UserController::class)
 //->middleware('checkrole:Super Admin');
 
-
+Route::put('/user/{id}/hapus-foto', [UserController::class, 'hapusFoto'])->name('user.hapus-foto');
 Route::resource('lokasiAset', lokasiAsetController::class);
 Route::resource('pemeliharaanAset', pemeliharaanAsetController::class);
 Route::resource('mutasiAset', mutasiAsetController::class);

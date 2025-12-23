@@ -42,16 +42,15 @@ class lokasiAsetController extends Controller
      */
     public function store(Request $request)
     {
-    // Tambahkan validasi
     $request->validate([
-        'aset_id'     => 'required|exists:aset,aset_id', // Memastikan aset_id wajib diisi dan ada di tabel aset
+        'aset_id'     => 'required|exists:aset,aset_id', 
         'keterangan'  => 'required|max:255',
         'lokasi_text' => 'required|max:100',
-        'rt'          => 'nullable|max:10', // Asumsi RT/RW tidak wajib
+        'rt'          => 'nullable|max:10', 
         'rw'          => 'nullable|max:10', 
+        'media'       => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
     ]);
     
-    // Jika validasi berhasil, lanjutkan proses store
     $data = $request->only([
         'aset_id', 
         'keterangan', 
@@ -59,8 +58,12 @@ class lokasiAsetController extends Controller
         'rt', 
         'rw'
     ]);
+
+    if ($request->hasFile('media') && $request->file('media')->isValid()) {
+        $path = $request->file('media')->store('lokasi-aset', 'public');
+        $data['media'] = $path;
+    }
     
-    // Kode store Anda
     LokasiAset::create($data);
     return redirect()->route('lokasiAset.index')->with('success', 'Penambahan Data Lokasi Aset Berhasil!');
     }
@@ -97,6 +100,14 @@ class lokasiAsetController extends Controller
         $lokasiAset->rt             = $request->rt;
         $lokasiAset->rw = $request->rw;
 
+        if ($request->hasFile('media')) {
+        if ($lokasiAset->media && \Storage::disk('public')->exists($lokasiAset->media)) {
+            \Storage::disk('public')->delete($lokasiAset->media);
+        }
+        $path = $request->file('media')->store('lokasi-aset', 'public');
+        $lokasiAset->media = $path;
+    }
+        $aset_id = $id;
         $lokasiAset->save();
         return redirect()->route('lokasiAset.index')->with('update', 'Lokasi Aset Berhasil!');
     }
@@ -109,7 +120,6 @@ class lokasiAsetController extends Controller
         $lokasiAset = LokasiAset::findOrFail($id);
         $lokasiAset->delete();
 
-        // Redirect pengguna
         return redirect()->route('lokasiAset.index')->with('success', 'Lokasi Aset berhasil dihapus!');
     }
 }

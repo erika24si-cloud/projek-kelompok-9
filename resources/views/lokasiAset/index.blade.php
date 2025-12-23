@@ -39,51 +39,59 @@
                 <h5>Data Lokasi Aset</h5>
             </div>
 
-            <div class="card-body">
-                @if (session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @endif
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Media</th> {{-- Header Baru --}}
+                            <th>ID Aset</th>
+                            <th>Keterangan</th>
+                            <th>Lokasi Teks</th>
+                            <th>RT / RW</th>
+                            <th>Dibuat Pada</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($datalokasiaset as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            
+                            {{-- Kolom Menampilkan Media Lokasi --}}
+                            <td>
+                                @if($item->media)
+                                    <img src="{{ asset('storage/' . $item->media) }}" 
+                                         alt="Media Lokasi" 
+                                         style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;" 
+                                         class="img-thumbnail shadow-sm">
+                                @else
+                                    <span class="badge bg-light text-dark border" style="font-size: 0.7rem;">No Image</span>
+                                @endif
+                            </td>
 
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>ID Aset</th>
-                                <th>Keterangan</th>
-                                <th>Lokasi Teks</th>
-                                <th>RT / RW</th>
-                                <th>Dibuat Pada</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($datalokasiaset as $item)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->aset_id }}</td>
-                                <td>{{ $item->keterangan }}</td>
-                                <td>{{ Str::limit($item->lokasi_text, 50) }}</td>
-                                <td>{{ $item->rt }} / {{ $item->rw }}</td>
-                                <td>{{ $item->created_at->format('d/m/Y') }}</td>
-                                <td>
-                                    <a href="{{ route('lokasiAset.edit', $item->lokasi_id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <td>{{ $item->aset_id }}</td>
+                            <td>{{ $item->keterangan }}</td>
+                            <td>{{ Str::limit($item->lokasi_text, 50) }}</td>
+                            <td>{{ $item->rt }} / {{ $item->rw }}</td>
+                            <td>{{ $item->created_at->format('d/m/Y') }}</td>
+                            <td>
+                                <a href="{{ route('lokasiAset.edit', $item->lokasi_id) }}" class="btn btn-sm btn-warning">Edit</a>
 
-                                    <form action="{{ route('lokasiAset.destroy', $item->lokasi_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus lokasi aset dengan Keterangan: {{ $item->keterangan }}?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="7" class="text-center">Belum ada data Lokasi Aset yang tersimpan.</td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+                                <form action="{{ route('lokasiAset.destroy', $item->lokasi_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus lokasi aset dengan Keterangan: {{ $item->keterangan }}?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="8" class="text-center">Belum ada data Lokasi Aset yang tersimpan.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
