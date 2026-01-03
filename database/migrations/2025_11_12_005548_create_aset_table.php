@@ -1,4 +1,4 @@
- <?php
+<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('aset', function (Blueprint $table) {
             $table->increments('aset_id');
             $table->foreignId('kategori_id')
-                ->constrained('kategoriAset', 'kategori_id') // <-- Perubahan di sini!
+                ->constrained('kategoriAset', 'kategori_id') 
                 ->onDelete('cascade');
             $table->string('kode_aset')->unique();
             $table->string('nama_aset', 100);
