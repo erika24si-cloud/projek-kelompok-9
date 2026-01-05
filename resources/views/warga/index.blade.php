@@ -7,7 +7,6 @@
     
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12 mb-4 text-right">
-            {{-- Tombol untuk pindah ke halaman Tambah Data Warga --}}
             <a href="{{ route('warga.create') }}" class="btn btn-primary">Tambah Data Warga Baru</a>
         </div>
         

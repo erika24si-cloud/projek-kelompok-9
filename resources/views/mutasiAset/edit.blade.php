@@ -57,7 +57,7 @@
                                 class="form-control @error('tanggal') is-invalid @enderror"
                                 id="tanggal"
                                 name="tanggal"
-                                value="{{ old('tanggal', $mutasiAset->tanggal->format('Y-m-d')) }}"
+                                value="{{ old('tanggal', \Carbon\Carbon::parse($mutasiAset->tanggal)->format('Y-m-d')) }}">
                                 required
                             >
                             @error('tanggal') <div class="text-danger mt-1">{{ $message }}</div> @enderror

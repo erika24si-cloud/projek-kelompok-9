@@ -57,13 +57,13 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->aset_id }}</td>
-                                <td>{{ $item->tanggal->format('d/m/Y') }}</td>
+                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d/m/Y') }}</td>
                                 <td>{{ $item->jenis_mutasi }}</td>
                                 <td>{{ $item->keterangan }}</td>
                                 <td>
                                     <a href="{{ route('mutasiAset.edit', $item->mutasi_id) }}" class="btn btn-sm btn-warning">Edit</a>
 
-                                    <form action="{{ route('mutasiAset.destroy', $item->mutasi_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus riwayat mutasi pada tanggal {{ $item->tanggal->format('d/m/Y') }}?');">
+                                    <form action="{{ route('mutasiAset.destroy', $item->mutasi_id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus riwayat mutasi pada tanggal {{ \Carbon\Carbon::parse($item->tanggal)->format('d/m/Y') }}?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>

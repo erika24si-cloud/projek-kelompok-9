@@ -324,7 +324,7 @@
                             @forelse($mutasiTerbaru as $mutasi)
                             <tr>
                                 <td class="py-2 px-4 font-mono text-xs">{{ $mutasi->aset_id }}</td>
-                                <td class="py-2 px-4 text-muted">{{ $mutasi->tanggal->format('d/m/Y') }}</td>
+                                <td class="py-2 px-4 text-muted">{{ \Carbon\Carbon::parse($mutasi->tanggal)->format('d/m/Y') }}</td>
                                 <td class="py-2 px-4 font-semibold">{{ $mutasi->jenis_mutasi }}</td>
                                 <td class="py-2 px-4 text-muted">{{ Str::limit($mutasi->keterangan, 50) }}</td>
                                 <td class="py-2 px-4 flex gap-1">
