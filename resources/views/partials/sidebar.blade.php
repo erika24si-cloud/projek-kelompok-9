@@ -5,7 +5,11 @@
    <div class="b-bg">
        <i class="feather icon-trending-up text-white"></i>
    </div>
-   <span class="text-white font-semibold text-lg">Bina Desa</span>
+   <div class="flex flex-col">
+  <span class="text-white font-semibold text-lg leading-tight">Bina Desa</span>
+  <span class="text-white/70 text-xs font-semibold">Sistem Inventaris dan Aset</span>
+</div>
+   
 </a>
     </div>
     <div class="navbar-content h-[calc(100vh_-_74px)] py-2.5">
@@ -19,15 +23,6 @@
               <i data-feather="home"></i>
             </span>
             <span class="pc-mtext">Dashboard</span>
-          </a>
-        </li>
-
-         <li class="pc-item">
-          <a href="{{ route('user.index') }}" class="pc-link">
-            <span class="pc-micon">
-              <i data-feather="users"></i>
-            </span>
-            <span class="pc-mtext">User</span>
           </a>
         </li>
 

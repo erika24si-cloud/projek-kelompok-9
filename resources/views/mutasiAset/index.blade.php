@@ -15,7 +15,7 @@
                     type="text"
                     name="search"
                     class="form-control"
-                    placeholder="Cari Tindakan atau Pelaksana..."
+                    placeholder="Cari Mutasi atau Aset..."
                     value="{{ request('search') }}"
                     style="width: 250px;"
                 >

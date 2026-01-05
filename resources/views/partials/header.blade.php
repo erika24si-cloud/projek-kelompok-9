@@ -12,18 +12,7 @@
                         <i data-feather="menu"></i>
                     </a>
                 </li>
-                <li class="dropdown pc-h-item">
-                    <a class="pc-head-link dropdown-toggle me-0" data-pc-toggle="dropdown" href="#" role="button"
-                        aria-haspopup="false" aria-expanded="false">
-                        <i data-feather="search"></i>
-                    </a>
-                    <div class="dropdown-menu pc-h-dropdown drp-search">
-                        <form class="px-2 py-1" action="{{ url('search') }}" method="GET">
-                            <input type="search" class="form-control !border-0 !shadow-none"
-                                placeholder="Search here. . ." />
-                        </form>
-                    </div>
-                </li>
+                
             </ul>
         </div>
         <div class="ms-auto">
@@ -34,14 +23,14 @@
                         <i data-feather="sun"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                        <a href="#!" class="dropdown-item" onclick="layout_change('dark')">
-                            <i data-feather="moon"></i>
-                            <span>Dark</span>
-                        </a>
-                        <a href="#!" class="dropdown-item" onclick="layout_change('light')">
-                            <i data-feather="sun"></i>
-                            <span>Light</span>
-                        </a>
+                    <a href="#!" class="dropdown-item" onclick="changeTheme('dark')">
+                    <i data-feather="moon"></i>
+                     <span>Dark</span>
+                     </a>
+                      <a href="#!" class="dropdown-item" onclick="changeTheme('light')">
+                      <i data-feather="sun"></i>
+                    <span>Light</span>
+                    </a>
                         <a href="#!" class="dropdown-item" onclick="layout_change_default()">
                             <i data-feather="settings"></i>
                             <span>Default</span>
@@ -54,9 +43,9 @@
                         <i data-feather="settings"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                        <a href="{{ url('profile') }}" class="dropdown-item">
+                        <a href="{{ route('user.index') }}" class="dropdown-item">
                             <i class="ti ti-user"></i>
-                            <span>My Account</span>
+                            <span>User</span>
                         </a>
                         <a href="{{ url('settings') }}" class="dropdown-item">
                             <i class="ti ti-settings"></i>

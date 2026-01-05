@@ -17,21 +17,25 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-       $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
+{
+    $request->validate([
+        'email'    => 'required|email',
+        'password' => 'required',
+    ]);
 
-        $user = User::where('email', $request->email)->first();
-        if ($user && Hash::check($request->password, $user->password)) {
-            Auth::login($user);
-            session(['last_login' => now()]);
+    $user = User::where('email', $request->email)->first();
 
-            return redirect()->route('user.index')->with('success', 'Login berhasil!');
-        } else {
-            return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
+    if ($user && Hash::check($request->password, $user->password)) {
+        if ($user->role !== 'admin') { 
+            return back()->withErrors(['email' => 'Hanya Admin yang diizinkan masuk ke sistem ini.'])->withInput();
         }
+        Auth::login($user);
+        session(['last_login' => now()]);
+
+        return redirect()->route('user.index')->with('success', 'Login berhasil!');
+    } else {
+        return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
+    }
 }
 
 public function logout(Request $request)
@@ -50,26 +54,30 @@ public function logout(Request $request)
         return view('auth.register'); 
     }
 
-    public function register(Request $request)
-    {
-        $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
-            'password' => 'required|confirmed',
-            'role' => 'required'
-        ]);
+   public function register(Request $request)
+{
+    $request->validate([
+        'name'     => 'required|string|max:255',
+        'email'    => 'required|string|email|max:255|unique:users',
+        'role'     => 'required',
+        'password' => 'required|confirmed'
+    ]);
 
-        $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'profile'  => 'https://ui-avatars.com/api/?name=' . urlencode($request->name) . '&background=random&color=fff',
-        ]);
-
-        Auth::login($user);
-        session(['last_login' => now()]);
-
-        return redirect()->route('user.index')->with('success', 'Akun berhasil dibuat!');
+    if ($request->role !== 'admin') {
+        return back()->withErrors(['role' => 'Maaf, halaman ini hanya dibuka oleh admin.'])->withInput();
     }
+
+    $user = User::create([
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'password' => Hash::make($request->password),
+        'role'     => $request->role,
+        'profile'  => 'https://ui-avatars.com/api/?name=' . urlencode($request->name) . '&background=random&color=fff',
+    ]);
+
+    Auth::login($user);
+    session(['last_login' => now()]);
+
+    return redirect()->route('user.index')->with('success', 'Akun berhasil dibuat!');
+}
 }

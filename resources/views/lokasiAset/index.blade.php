@@ -96,17 +96,14 @@
         </div>
     </div>
 
-    {{-- Bagian Pagination --}}
-    <div class="col-span-12 mt-4">
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                @if ($datalokasiaset instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                    {{ $datalokasiaset->links() }}
-                @endif
+     <div class="col-span-12 mt-4">
+         <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            {{ $datalokasiaset->links() }}
+        </div>
             </div>
         </div>
     </div>
-
 </div>
 
 @endsection

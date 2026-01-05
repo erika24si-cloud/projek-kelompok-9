@@ -202,7 +202,7 @@
         <div class="card table-card">
             <div class="card-header flex justify-between items-center">
                 <h5>Lokasi Aset Terbaru</h5>
-                <a href="{{ route('lokasiAset.index') }}" class="text-cyan-500 text-sm">Lihat Semua</a>
+                <a href="{{ route('lokasiAset.index') }}" class="text-yellow-500 text-sm">Lihat Semua</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

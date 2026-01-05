@@ -38,16 +38,6 @@
                                 </div>
                                 
                                 
-                                <div class="flex mt-1 justify-between items-center flex-wrap">
-                                    <div class="form-check">
-                                        {{-- Field Remember Me --}}
-                                        <input class="form-check-input input-primary" type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }} />
-                                        <label class="form-check-label text-muted" for="remember">Remember me?</label>
-                                    </div>
-                                    <h6 class="font-normal text-primary-500 mb-0">
-                                        <a href="{{ route('password.request') }}"> Forgot Password? </a>
-                                    </h6>
-                                </div>
                                 
                                 <div class="mt-4 text-center">
                                     <button type="submit" class="btn btn-primary mx-auto shadow-2xl">Login</button>

@@ -44,13 +44,13 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.reg
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register.process');
 
 
-Route::resource('user', UserController::class);
+//Route::resource('user', UserController::class);
+
+Route::resource('user', UserController::class)
+->middleware('checkislogin');
 
 //Route::resource('user', UserController::class)
-//->middleware('checkislogin');
-
-//Route::resource('user', UserController::class)
-//->middleware('checkrole:Super Admin');
+//->middleware('checkrole:Admin');
 
 Route::put('/user/{id}/hapus-foto', [UserController::class, 'hapusFoto'])->name('user.hapus-foto');
 Route::resource('lokasiAset', lokasiAsetController::class);

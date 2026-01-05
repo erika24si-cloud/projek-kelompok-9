@@ -16,9 +16,14 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (Auth::check() && Auth::user()->role == $role) {
-          return $next($request);
-      }
-        return abort('403');
+       if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        if (Auth::user()->role === $role) {
+            return $next($request);
+        }
+
+        return redirect()->route('guest.dashboard')->with('error', 'Anda tidak memiliki akses admin.');
     }
 }
