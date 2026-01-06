@@ -19,8 +19,8 @@ class kategoriAsetController extends Controller
             $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
                   ->orWhere('kode', 'LIKE', '%' . $searchTerm . '%');
         }
-        $kategori = $query->get(); 
-        $data['kategori'] = $kategori;
+        $dataAsetPaginated = $query->simplePaginate(4); 
+        $data['datakategoriAset'] = $dataAsetPaginated;
         $data['searchTerm'] = $searchTerm; 
     
         return view('kategori_aset.index', $data);
@@ -59,10 +59,10 @@ class kategoriAsetController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        $kategoriAset = kategoriAset::findOrFail($id);
-        return view('kategori_aset.edit', compact('kategoriAset'));
-    }
+{
+    $kategoriAset = kategoriAset::findOrFail($id);
+    return view('kategori_aset.edit', compact('kategoriAset'));
+}
 
     /**
      * Update the specified resource in storage.

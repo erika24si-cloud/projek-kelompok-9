@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class pemeliharaanAset extends Model
 {
@@ -19,7 +20,12 @@ class pemeliharaanAset extends Model
     ];
     
     protected $casts = [
-        'tanggal' => 'date', // PERBAIKAN PENTING DI SINI!
+        'tanggal' => 'date',
         'biaya' => 'float',
     ];
+
+    public function aset(): BelongsTo
+    {
+        return $this->belongsTo(aset::class, 'aset_id', 'aset_id');
+    }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori_aset', function (Blueprint $table) {
+        Schema::create('kategoriAset', function (Blueprint $table) {
             $table->bigIncrements('kategori_id');
             $table->string('nama', 100);
             $table->string('kode')->unique();
-            $table->text('deskripsi')->nullable();
+            $table->string('deskripsi', 100);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_aset');
+        Schema::dropIfExists('kategoriAset');
     }
 };

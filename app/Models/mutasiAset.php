@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class mutasiAset extends Model
 {
@@ -15,4 +16,13 @@ class mutasiAset extends Model
         'jenis_mutasi',
         'keterangan',
     ];
+
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
+    public function aset(): BelongsTo
+    {
+        return $this->belongsTo(aset::class, 'aset_id', 'aset_id');
+    }
 }

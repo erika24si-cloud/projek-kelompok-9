@@ -13,8 +13,8 @@ class mutasiAsetController extends Controller
      */
     public function index()
     {
-        $mutasiAset = mutasiAset::all();
-        return view('mutasiAset.index' , compact('mutasiAset'));
+        $mutasiAset = mutasiAset::with('aset')->orderBy('tanggal', 'desc')->simplePaginate(4);
+        return view('mutasi_aset.index' , compact('mutasiAset'));
     }
 
     /**
@@ -22,8 +22,8 @@ class mutasiAsetController extends Controller
      */
     public function create()
     {
-        $asets = Aset::all();
-        return view('mutasiAset.create', compact('asets'));
+        $asets = aset::all();
+        return view('mutasi_aset.create', compact('asets'));
     }
 
     /**
@@ -36,7 +36,7 @@ class mutasiAsetController extends Controller
         $data['jenis_mutasi']    = $request->jenis_mutasi;
         $data['keterangan']       = $request->keterangan;
         mutasiAset::create($data);
-        return redirect()->route('mutasiAset.index')->with('success', 'Mutasi Aset berhasil ditambahkan!');
+        return redirect()->route('mutasi-aset.index')->with('success', 'Mutasi Aset berhasil ditambahkan!');
     }
 
     /**
@@ -44,7 +44,7 @@ class mutasiAsetController extends Controller
      */
     public function show(string $id)
     {
-        return view('mutasiAset.show');
+        return view('mutasi_aset.show');
     }
 
     /**
@@ -53,8 +53,8 @@ class mutasiAsetController extends Controller
     public function edit(string $id)
     {
         $mutasiAset = mutasiAset::findOrFail($id);
-        $asets            = Aset::all();
-        return view('mutasiAset.edit', compact('mutasiAset', 'asets'));
+        $asets            = aset::all();
+        return view('mutasi_aset.edit', compact('mutasiAset', 'asets'));
     }
 
     /**
@@ -69,7 +69,7 @@ class mutasiAsetController extends Controller
         $mutasiAset->keterangan     = $request->keterangan;
 
         $mutasiAset->save();
-        return redirect()->route('mutasiAset.index')->with('success', 'Perubahan Mutasi Aset berhasil disimpan!');
+        return redirect()->route('mutasi-aset.index')->with('success', 'Perubahan Mutasi Aset berhasil disimpan!');
     }
 
     /**
@@ -79,6 +79,6 @@ class mutasiAsetController extends Controller
     {
         $mutasiAset = mutasiAset::findOrFail($id);
         $mutasiAset->delete();
-        return redirect()->route('mutasiAset.index')->with('delete', 'Mutasi Aset berhasil dihapus!');
+        return redirect()->route('mutasi-aset.index')->with('delete', 'Mutasi Aset berhasil dihapus!');
     }
 }

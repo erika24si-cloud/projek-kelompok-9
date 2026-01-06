@@ -14,14 +14,14 @@ class pemeliharaanAsetController extends Controller
     {
         $search = $request->get('search');
 
-        $query = PemeliharaanAset::query();
+        $query = pemeliharaanAset::with('aset');
 
         if ($search) {
             $query->where('tindakan', 'like', '%' . $search . '%')
                 ->orWhere('pelaksana', 'like', '%' . $search . '%');
         }
-        $pemeliharaanAset = $query->orderBy('tanggal', 'desc')->paginate(10);
-        return view('pemeliharaanAset.index', compact('pemeliharaanAset'));
+        $pemeliharaanAset = $query->orderBy('tanggal', 'desc')->simplePaginate(4);
+        return view('pemeliharaan_aset.index', compact('pemeliharaanAset', 'search'));
     }
 
     /**
@@ -29,8 +29,8 @@ class pemeliharaanAsetController extends Controller
      */
     public function create()
     {
-        $asets = Aset::all();
-        return view('pemeliharaanAset.create', compact('asets'));
+        $asets = aset::all();
+        return view('pemeliharaan_aset.create', compact('asets'));
     }
 
     /**
@@ -47,8 +47,8 @@ class pemeliharaanAsetController extends Controller
         $path = $request->file('media')->store('pemeliharaan-aset', 'public');
         $data['media'] = $path;
     }
-        PemeliharaanAset::create($data);
-        return redirect()->route('pemeliharaanAset.index')->with('success', 'Riwayat Pemeliharaan berhasil ditambahkan!');
+        pemeliharaanAset::create($data);
+        return redirect()->route('pemeliharaan-aset.index')->with('success', 'Riwayat Pemeliharaan berhasil ditambahkan!');
     }
 
     /**
@@ -56,7 +56,7 @@ class pemeliharaanAsetController extends Controller
      */
     public function show(string $id)
     {
-        return view('pemeliharaanAset.index');
+        return view('pemeliharaan_aset.index');
     }
 
     /**
@@ -64,9 +64,9 @@ class pemeliharaanAsetController extends Controller
      */
     public function edit(string $id)
     {
-        $pemeliharaanAset = PemeliharaanAset::findOrFail($id);
-        $asets            = Aset::all();
-        return view('pemeliharaanAset.edit', compact('pemeliharaanAset', 'asets'));
+        $pemeliharaanAset = pemeliharaanAset::findOrFail($id);
+        $asets            = aset::all();
+        return view('pemeliharaan_aset.edit', compact('pemeliharaanAset', 'asets'));
     }
 
     /**
@@ -74,7 +74,7 @@ class pemeliharaanAsetController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pemeliharaanAset            = PemeliharaanAset::findOrFail($id);
+        $pemeliharaanAset            = pemeliharaanAset::findOrFail($id);
         $pemeliharaanAset->aset_id   = $request->aset_id;
         $pemeliharaanAset->tanggal   = $request->tanggal;
         $pemeliharaanAset->tindakan  = $request->tindakan;
@@ -89,7 +89,7 @@ class pemeliharaanAsetController extends Controller
     }
 
         $pemeliharaanAset->save();
-        return redirect()->route('pemeliharaanAset.index')->with('success', 'Perubahan Riwayat Pemeliharaan berhasil disimpan!');
+        return redirect()->route('pemeliharaan-aset.index')->with('success', 'Perubahan Riwayat Pemeliharaan berhasil disimpan!');
     }
 
     /**
@@ -97,8 +97,8 @@ class pemeliharaanAsetController extends Controller
      */
     public function destroy(string $id)
     {
-        $pemeliharaanAset = PemeliharaanAset::findOrFail($id);
+        $pemeliharaanAset = pemeliharaanAset::findOrFail($id);
         $pemeliharaanAset->delete();
-        return redirect()->route('pemeliharaanAset.index')->with('delete', 'Riwayat Pemeliharaan berhasil dihapus!');
+        return redirect()->route('pemeliharaan-aset.index')->with('delete', 'Riwayat Pemeliharaan berhasil dihapus!');
     }
 }

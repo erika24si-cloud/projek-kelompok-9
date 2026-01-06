@@ -28,10 +28,12 @@
         
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="#" class="nav-item nav-link active">Home</a>
-                <a href="#" class="nav-item nav-link">About Us</a>
-                <a href="#" class="nav-item nav-link">Products</a>
-                <a href="#" class="nav-item nav-link">Contact Us</a>
+                <a class="nav-link active" href="{{ route('dashboard') }}">Home</a>
+                <a class="nav-link active" href="{{ route('kategori-aset.index') }}">Kategori Aset</a>
+                <a class="nav-link active" href="{{ route('aset.index') }}">Aset</a>
+                <a class="nav-link active" href="{{ route('lokasi-aset.index') }}">Lokasi Aset</a>
+                <a class="nav-link active" href="{{ route('pemeliharaan-aset.index') }}">Pemeliharaan Aset</a>
+                <a class="nav-link active" href="{{ route('mutasi-aset.index') }}">Mutasi Aset</a> 
             </div>
         </div>
     </nav>

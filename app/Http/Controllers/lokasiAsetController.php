@@ -14,7 +14,7 @@ class lokasiAsetController extends Controller
    public function index(Request $request)
 {
    $asetIdFilter = $request->get('aset_id');
-        $query = LokasiAset::query();
+        $query = lokasiAset::with('aset');
 
         if ($asetIdFilter) {
             if ($asetIdFilter !== 'all') {
@@ -22,19 +22,19 @@ class lokasiAsetController extends Controller
             }
         }
         
-        $dataLokasiAset = $query->simplePaginate(10); 
+        $dataLokasiAset = $query->simplePaginate(4); 
         $data['datalokasiaset'] = $dataLokasiAset;
         $data['asetIdFilter'] = $asetIdFilter; 
         
-        return view('lokasiAset.index', $data);
+        return view('lokasi_aset.index', $data);
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-         $asetList = Aset::all(); 
-        return view('lokasiAset.create', compact('asetList'));
+         $asetList = aset::all(); 
+        return view('lokasi_aset.create', compact('asetList'));
     }
 
     /**
@@ -64,8 +64,8 @@ class lokasiAsetController extends Controller
         $data['media'] = $path;
     }
     
-    LokasiAset::create($data);
-    return redirect()->route('lokasiAset.index')->with('success', 'Penambahan Data Lokasi Aset Berhasil!');
+    lokasiAset::create($data);
+    return redirect()->route('lokasi-aset.index')->with('success', 'Penambahan Data Lokasi Aset Berhasil!');
     }
 
     /**
@@ -73,8 +73,8 @@ class lokasiAsetController extends Controller
      */
     public function show(string $id)
     {
-        $lokasiAset = LokasiAset::findOrFail($id); 
-        return view('lokasiAset.show', compact('lokasiAset'));
+        $lokasiAset = lokasiAset::findOrFail($id); 
+        return view('lokasi_aset.show', compact('lokasiAset'));
     }
 
     /**
@@ -82,9 +82,9 @@ class lokasiAsetController extends Controller
      */
     public function edit(string $id)
     {
-        $lokasiAset = LokasiAset::findOrFail($id);
-        $asetList = Aset::all();
-        return view('lokasiAset.edit', compact('asetList', 'lokasiAset')); 
+        $lokasiAset = lokasiAset::findOrFail($id);
+        $asetList = aset::all();
+        return view('lokasi_aset.edit', compact('asetList', 'lokasiAset')); 
     }
 
     /**
@@ -109,7 +109,7 @@ class lokasiAsetController extends Controller
     }
         $aset_id = $id;
         $lokasiAset->save();
-        return redirect()->route('lokasiAset.index')->with('update', 'Lokasi Aset Berhasil!');
+        return redirect()->route('lokasi-aset.index')->with('update', 'Lokasi Aset Berhasil!');
     }
 
     /**
@@ -117,9 +117,9 @@ class lokasiAsetController extends Controller
      */
     public function destroy(string $id)
     {
-        $lokasiAset = LokasiAset::findOrFail($id);
+        $lokasiAset = lokasiAset::findOrFail($id);
         $lokasiAset->delete();
 
-        return redirect()->route('lokasiAset.index')->with('success', 'Lokasi Aset berhasil dihapus!');
+        return redirect()->route('lokasi-aset.index')->with('success', 'Lokasi Aset berhasil dihapus!');
     }
 }
