@@ -49,9 +49,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 Route::resource('user', UserController::class)
 ->middleware('checkislogin');
 
-//Route::resource('user', UserController::class)
-//->middleware('checkrole:Admin');
-
 Route::put('/user/{id}/hapus-foto', [UserController::class, 'hapusFoto'])->name('user.hapus-foto');
 Route::resource('lokasiAset', lokasiAsetController::class);
 Route::resource('pemeliharaanAset', pemeliharaanAsetController::class);

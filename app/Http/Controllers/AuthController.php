@@ -64,7 +64,7 @@ public function logout(Request $request)
     ]);
 
     if ($request->role !== 'admin') {
-       return redirect()->away('https://yuannisa-2sie.alwaysdata.net/guest/dashboard');
+       return redirect()->away('https://syahrul-sie.alwaysdata.net/');
     }
 
     $user = User::create([
