@@ -79,7 +79,7 @@
                                 class="form-control @error('keterangan') is-invalid @enderror"
                                 id="keterangan"
                                 name="keterangan"
-                                placeholder="Contoh: Tim Maintenance Internal / Bengkel Jaya Abadi"
+                                placeholder="Contoh: Pindahkan untuk perbaikan modul RAM"
                                 value="{{ old('keterangan') }}"
                             >
                             @error('keterangan') <div class="text-danger mt-1">{{ $message }}</div> @enderror
