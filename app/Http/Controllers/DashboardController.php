@@ -20,7 +20,7 @@ public function index()
 {
     $totalWarga = warga::count();
     $totalAset = aset::count();
-    $totalKategori = kategori_aset::count(); 
+    $totalKategori = kategoriAset::count(); 
     $totalLokasi = lokasiAset::count();    
     $totalPemeliharaan = pemeliharaanAset::count();        
     $totalMutasi = mutasiAset::count();             
