@@ -11,7 +11,6 @@
                     <h5>Hello card</h5>
                 </div>
                 <div class="card-body">
-                    {{-- Di sini Anda bisa menambahkan konten halaman sampel Anda --}}
                     <p>Ini adalah konten dari Sample Page.</p>
                 </div>
             </div>

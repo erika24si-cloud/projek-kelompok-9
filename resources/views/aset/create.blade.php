@@ -22,7 +22,6 @@
                 </div>
 
                 <div class="card-body">
-                    {{-- TAMBAHAN: enctype="multipart/form-data" wajib ada untuk upload file --}}
                     <form method="POST" action="{{ route('aset.store') }}" enctype="multipart/form-data">
                         @csrf
 

@@ -46,7 +46,6 @@
 
                             <div class="flex justify-between items-end flex-wrap mt-4">
                                 <h6 class="font-medium mb-0">Don't have an Account?</h6>
-                                {{-- Tautan Create Account: Menggunakan route('auth.register') --}}
                                 <a href="{{ route('auth.register') }}" class="text-primary-500">Create Account</a>
                             </div>
 

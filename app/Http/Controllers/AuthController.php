@@ -64,7 +64,7 @@ public function logout(Request $request)
     ]);
 
     if ($request->role !== 'admin') {
-        return back()->withErrors(['role' => 'Maaf, halaman ini hanya dibuka oleh admin.'])->withInput();
+       return redirect()->away('https://yuannisa-2sie.alwaysdata.net/guest/dashboard');
     }
 
     $user = User::create([

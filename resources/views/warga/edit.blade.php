@@ -4,7 +4,6 @@
 
 @section('content')
 
-    {{-- Tampilkan pesan error validasi di bagian atas jika ada --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -29,7 +28,7 @@
                         action="{{ route('warga.update', $warga->warga_id) }}"
                     >
                         @csrf 
-                        @method('PUT') {{-- WAJIB: Menggunakan metode PUT untuk update --}}
+                        @method('PUT') 
 
                         {{-- 1. NOMOR KTP --}}
                         <div class="form-group mb-4">

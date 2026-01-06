@@ -22,7 +22,6 @@
                 </div>
 
                 <div class="card-body">
-                    {{-- TAMBAHAN: enctype wajib untuk upload file --}}
                     <form
                         method="POST"
                         action="{{ route('pemeliharaanAset.update', $pemeliharaanAset->pemeliharaan_id) }}"
@@ -107,11 +106,9 @@
                             @error('pelaksana') <div class="text-danger mt-1">{{ $message }}</div> @enderror
                         </div>
 
-                        {{-- TAMBAHAN: PREVIEW & INPUT MEDIA PEMELIHARAAN --}}
                         <div class="form-group mb-4">
                             <label class="form-label" for="media">Bukti Pembayaran / Media</label>
                             
-                            {{-- Tampilkan bukti lama jika ada --}}
                             @if($pemeliharaanAset->media)
                                 <div class="mb-3">
                                     <p class="text-sm text-muted">Bukti saat ini:</p>

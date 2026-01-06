@@ -5,7 +5,7 @@
     data-pc-direction="ltr" 
     dir="ltr" 
     data-pc-theme="light" 
-    id="main-html-tag"> {{-- Tambah ID agar mudah diakses JS --}}
+    id="main-html-tag"> 
 
 <head>
     <meta charset="utf-8">
@@ -16,7 +16,6 @@
     @include('partials.head-page-meta')
     @include('partials.head-css') 
 
-    {{-- SCRIPT 1: Jalankan secepat mungkin di Head untuk mencegah 'Flash of Light Mode' --}}
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -38,26 +37,6 @@
 
             @include('partials.breadcrumb')
             
-            @if(Session::has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ Session::get('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if(Session::has('update'))
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    {{ Session::get('update') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if(Session::has('delete'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ Session::get('delete') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
 
             @yield('content')
             
@@ -65,9 +44,41 @@
     </div>
     @include('partials.footer-block')
     
-    @include('partials.footer-js')
+   @include('partials.footer-js')
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+        @if(Session::has('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: "{{ Session::get('success') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endif
+
+        @if(Session::has('update'))
+            Swal.fire({
+                icon: 'info',
+                title: 'Diperbarui!',
+                text: "{{ Session::get('update') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endif
+
+        @if(Session::has('delete'))
+            Swal.fire({
+                icon: 'warning',
+                title: 'Dihapus!',
+                text: "{{ Session::get('delete') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        @endif
+
         function changeTheme(theme) {
             localStorage.setItem('theme', theme);
             

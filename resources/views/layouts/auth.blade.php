@@ -33,18 +33,14 @@
 
 <body>
     
-    {{-- 1. Pre-loader --}}
     <div class="loader-bg fixed inset-0 bg-white dark:bg-themedark-cardbg z-[1034]">
         <div class="loader-track h-[5px] w-full inline-block absolute overflow-hidden top-0">
             <div class="loader-fill w-[300px] h-[5px] bg-primary-500 absolute top-0 left-0 animate-[hitZak_0.6s_ease-in-out_infinite_alternate]"></div>
         </div>
     </div>
     
-    {{-- 2. SLOT KONTEN UTAMA: Di sinilah konten Login/Register masuk --}}
     @yield('content')
     
-    {{-- 3. Required Javascript --}}
-    {{-- Menggunakan {{ asset(...) }} --}}
     <script src="{{ asset('assets/js/plugins/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/icon/custom-icon.js') }}"></script>
@@ -56,10 +52,8 @@
     <div class="floting-button fixed bottom-[50px] right-[30px] z-[1030]">
     </div>
     
-    {{-- Stack untuk Scripts Tambahan (jika dibutuhkan) --}}
     @stack('scripts')
     
-    {{-- Script inisialisasi tema --}}
     <script>
         layout_change('false');
         layout_theme_sidebar_change('dark');

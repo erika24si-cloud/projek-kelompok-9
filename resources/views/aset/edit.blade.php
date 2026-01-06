@@ -22,7 +22,6 @@
                 </div>
                 
                 <div class="card-body">
-                    {{-- TAMBAHAN: enctype wajib ada untuk upload file --}}
                     <form 
                         method="POST" 
                         action="{{ route('aset.update', $aset->aset_id) }}"

@@ -19,7 +19,7 @@ class kategoriAsetController extends Controller
             $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
                   ->orWhere('kode', 'LIKE', '%' . $searchTerm . '%');
         }
-        $dataAsetPaginated = $query->simplePaginate(3); 
+        $dataAsetPaginated = $query->simplePaginate(5); 
         $data['datakategoriAset'] = $dataAsetPaginated;
         $data['searchTerm'] = $searchTerm; 
     

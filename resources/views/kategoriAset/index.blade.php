@@ -55,7 +55,7 @@
                             <tbody>
                                 @forelse ($datakategoriAset as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($datakategoriAset->currentPage() - 1) * $datakategoriAset->perPage() + $loop->iteration }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->kode }}</td>
                                     <td>{{ $item->deskripsi }}</td>

@@ -29,7 +29,6 @@ class WargaController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all()) 
         $data['no_ktp'] = $request->no_ktp;
         $data['nama'] = $request->nama;
         $data['jenis_kelamin'] = $request->jenis_kelamin;

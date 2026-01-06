@@ -19,7 +19,7 @@ class pemeliharaanAset extends Model
     ];
     
     protected $casts = [
-        'tanggal' => 'date', // PERBAIKAN PENTING DI SINI!
+        'tanggal' => 'date', 
         'biaya' => 'float',
     ];
 }

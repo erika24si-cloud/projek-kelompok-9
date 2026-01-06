@@ -41,7 +41,6 @@ class AsetController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all())
         $data['kategori_id']     = $request->kategori_id;
         $data['kode_aset']       = $request->kode_aset;
         $data['nama_aset']       = $request->nama_aset;
