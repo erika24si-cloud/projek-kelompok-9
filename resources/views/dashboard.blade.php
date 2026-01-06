@@ -76,32 +76,63 @@
     <div class="container-fluid bg-light bg-icon my-5 py-6">
         <div class="container">
             <div class="section-header text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-5 mb-3">Our Features</h1>
-                <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                <h1 class="display-5 mb-3">Statistik Inventaris</h1>
+                <p>Ringkasan data inventaris aset perusahaan untuk memudahkan monitoring dan pengelolaan.</p>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="bg-white text-center h-100 p-4 p-xl-5">
-                        <img class="img-fluid mb-4" src="{{ asset('assets/img/icon-1.png') }}" alt="">
-                        <h4 class="mb-3">Natural Process</h4>
-                        <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
+                        <div class="mb-4">
+                            <i class="fa fa-box fa-3x text-primary"></i>
+                        </div>
+                        <h2 class="display-6 mb-3 text-primary">{{ $totalAset }}</h2>
+                        <h4 class="mb-3">Total Aset</h4>
+                        <p class="mb-4">Jumlah keseluruhan aset yang terdaftar dalam sistem inventaris, mencakup semua kategori dan kondisi aset yang dimiliki perusahaan.</p>
+                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="{{ route('aset.index') }}">Lihat Detail</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="bg-white text-center h-100 p-4 p-xl-5">
-                        <img class="img-fluid mb-4" src="{{ asset('assets/img/icon-2.png') }}" alt="">
-                        <h4 class="mb-3">Organic Products</h4>
-                        <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
+                        <div class="mb-4">
+                            <i class="fa fa-tags fa-3x text-secondary"></i>
+                        </div>
+                        <h2 class="display-6 mb-3 text-secondary">{{ $totalKategori }}</h2>
+                        <h4 class="mb-3">Kategori Aset</h4>
+                        <p class="mb-4">Pengelompokan aset berdasarkan jenis dan karakteristiknya untuk memudahkan klasifikasi dan pengelolaan inventaris secara sistematis.</p>
+                        <a class="btn btn-outline-secondary border-2 py-2 px-4 rounded-pill" href="{{ route('kategori-aset.index') }}">Lihat Detail</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="bg-white text-center h-100 p-4 p-xl-5">
-                        <img class="img-fluid mb-4" src="{{ asset('assets/img/icon-3.png') }}" alt="">
-                        <h4 class="mb-3">Biologically Safe</h4>
-                        <p class="mb-4">Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed vero dolor duo.</p>
-                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="">Read More</a>
+                        <div class="mb-4">
+                            <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
+                        </div>
+                        <h2 class="display-6 mb-3 text-primary">{{ $totalLokasi }}</h2>
+                        <h4 class="mb-3">Lokasi Aset</h4>
+                        <p class="mb-4">Informasi lokasi penyimpanan dan penempatan aset untuk memudahkan tracking dan monitoring distribusi aset di berbagai lokasi perusahaan.</p>
+                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="{{ route('lokasi-aset.index') }}">Lihat Detail</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="bg-white text-center h-100 p-4 p-xl-5">
+                        <div class="mb-4">
+                            <i class="fa fa-tools fa-3x text-secondary"></i>
+                        </div>
+                        <h2 class="display-6 mb-3 text-secondary">{{ $totalPemeliharaan }}</h2>
+                        <h4 class="mb-3">Pemeliharaan Aset</h4>
+                        <p class="mb-4">Riwayat dan jadwal pemeliharaan aset untuk menjaga kondisi dan performa aset tetap optimal serta memperpanjang umur pakai aset.</p>
+                        <a class="btn btn-outline-secondary border-2 py-2 px-4 rounded-pill" href="{{ route('pemeliharaan-aset.index') }}">Lihat Detail</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
+                    <div class="bg-white text-center h-100 p-4 p-xl-5">
+                        <div class="mb-4">
+                            <i class="fa fa-exchange-alt fa-3x text-primary"></i>
+                        </div>
+                        <h2 class="display-6 mb-3 text-primary">{{ $totalMutasi }}</h2>
+                        <h4 class="mb-3">Mutasi Aset</h4>
+                        <p class="mb-4">Catatan perpindahan, penambahan, atau pengurangan aset untuk tracking perubahan kepemilikan dan lokasi aset secara transparan.</p>
+                        <a class="btn btn-outline-primary border-2 py-2 px-4 rounded-pill" href="{{ route('mutasi-aset.index') }}">Lihat Detail</a>
                     </div>
                 </div>
             </div>

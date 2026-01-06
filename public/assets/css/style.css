@@ -108,11 +108,29 @@
     color: #555555;
     font-weight: 500;
     outline: none;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
+.navbar .navbar-nav .nav-link:hover {
     color: var(--dark);
+}
+
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.navbar .navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px 2px 0 0;
 }
 
 @media (max-width: 991.98px) {
@@ -386,11 +404,35 @@
 
 /* --------------------------------CSS UNTUK CARD-------------------------------------------------- */
   /* --- CSS SEBELUMNYA (TIDAK BERUBAH) --- */
-  .container {
+  /* Hapus override container yang mengganggu grid system */
+  /* .container {
     display: flex; gap: 20px; padding: 20px; flex-wrap: wrap; font-family: sans-serif;
+  } */
+  /* Memastikan jarak antar card konsisten untuk semua kondisi (1, 2, 3, 4 card) */
+  .row.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+    margin-right: calc(var(--bs-gutter-x) * -0.5);
   }
+  
+  .row.g-4 > [class*="col-"] {
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    margin-bottom: var(--bs-gutter-y);
+  }
+  
+  /* Pastikan card memiliki tinggi yang konsisten */
+  .row.g-4 .card {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Pastikan spacing horizontal konsisten - biarkan Bootstrap grid bekerja normal */
+  /* Tidak perlu override margin karena Bootstrap sudah mengatur dengan padding */
+
   .card {
-    width: 300px; background: #fff; border: 1px solid #e0e0e0; border-radius: 10px;
+    width: 100%; background: #fff; border: 1px solid #e0e0e0; border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.2s;
   }
   .card:hover { transform: translateY(-3px); box-shadow: 0 8px 12px rgba(0,0,0,0.1); }

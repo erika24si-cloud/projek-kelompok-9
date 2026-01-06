@@ -55,13 +55,9 @@
                 @forelse($dataaset as $row)
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="card">
-                            @if($row->media)
-                                <img src="{{ asset('storage/' . $row->media) }}" alt="{{ $row->nama_aset }}" class="card-image" style="object-fit: cover; width: 100%; height: 160px;">
-                            @else
-                                <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; height: 160px;">
-                                    <i class="fa fa-image fa-4x text-white"></i>
-                                </div>
-                            @endif
+                            <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; height: 160px;">
+                                <i class="fa fa-image fa-4x text-white"></i>
+                            </div>
                             <div class="card-content">
                                 <div class="card-header">
                                     <span class="category-badge">{{ $row->kategori->nama ?? 'Tidak ada kategori' }}</span>
