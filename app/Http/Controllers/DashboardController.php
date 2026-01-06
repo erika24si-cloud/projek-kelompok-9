@@ -19,7 +19,7 @@ class DashboardController extends Controller
         // Gunakan cache untuk mempercepat loading
         // Cache akan expire setelah 5 menit
         $totalAset = cache()->remember('total_aset', 300, function () {
-            return Aset::count();
+            return aset::count();
         });
         
         $totalKategori = cache()->remember('total_kategori', 300, function () {
