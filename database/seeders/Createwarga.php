@@ -23,7 +23,7 @@ class Createwarga extends Seeder
                 'jenis_kelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
                 'agama' => $faker->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Khonghucu']),
                 'pekerjaan' => $faker->jobTitle,
-                'telp' => $faker->phoneNumber,
+               'telp' => $faker->numerify('08##########'), 
                 'email' => $faker->unique()->safeEmail,
                 'created_at' => now(),
                 'updated_at' => now(),
