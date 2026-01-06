@@ -1,63 +1,92 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\KategoriAset;
-use Illuminate\Http\Request;
 
-class KategoriAsetController extends Controller
+use Illuminate\Http\Request;
+use App\Models\kategoriAset;
+use Illuminate\Validation\Rule;
+
+class kategoriAsetController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
     {
-        $kategori = KategoriAset::all();
-        return view('kategori_aset.index', compact('kategori'));
+        $searchTerm = $request->get('search');
+        $query = kategoriAset::query(); 
+        if ($searchTerm) {
+            $query->where('nama', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('kode', 'LIKE', '%' . $searchTerm . '%');
+        }
+        $kategori = $query->get(); 
+        $data['kategori'] = $kategori;
+        $data['searchTerm'] = $searchTerm; 
+    
+        return view('kategori_aset.index', $data);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         return view('kategori_aset.create');
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'kode' => 'required|unique:kategori_aset,kode',
-            'deskripsi' => 'nullable',
-        ]);
-
-        KategoriAset::create($request->all());
-
-        return redirect()->route('kategori-aset.index')
-            ->with('success', 'Kategori aset berhasil ditambahkan');
+        //dd($request->all()) 
+        $data['nama'] = $request->nama;
+        $data['kode'] = $request->kode;
+        $data['deskripsi'] = $request->deskripsi;
+        kategoriAset::create($data);
+        return redirect()->route('kategori-aset.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
-    public function edit($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $kategori = KategoriAset::findOrFail($id);
-        return view('kategori_aset.edit', compact('kategori'));
+        return view('kategori_aset.index');
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        $kategori = KategoriAset::findOrFail($id);
-
-        $request->validate([
-            'nama' => 'required',
-            'kode' => 'required|unique:kategori_aset,kode,' . $kategori->kategori_id . ',kategori_id',
-            'deskripsi' => 'nullable',
-        ]);
-
-        $kategori->update($request->all());
-
-        return redirect()->route('kategori-aset.index')
-            ->with('success', 'Kategori aset berhasil diupdate');
+        $kategoriAset = kategoriAset::findOrFail($id);
+        return view('kategori_aset.edit', compact('kategoriAset'));
     }
 
-    public function destroy($id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
     {
-        KategoriAset::destroy($id);
+        $kategori_id = $id;
+        $kategoriAset = kategoriAset::findOrFail($kategori_id);
 
-        return redirect()->route('kategori-aset.index')
-            ->with('success', 'Kategori aset berhasil dihapus');
+        $kategoriAset->nama = $request->nama;
+        $kategoriAset->kode  = $request->kode;
+        $kategoriAset->deskripsi   = $request->deskripsi;
+        
+        $kategoriAset->save();
+        return redirect()->route('kategori-aset.index')->with('update', 'Perubahan Data Berhasil!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $kategoriAset = kategoriAset::findOrFail($id);
+        $kategoriAset->delete();
+        return redirect()->route('kategori-aset.index')->with('delete', 'Data Berhasil Dihapus!');
     }
 }

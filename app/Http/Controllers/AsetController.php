@@ -13,19 +13,19 @@ class AsetController extends Controller
     public function index(Request $request)
     {
         $kondisiFilter = $request->get('kondisi');
-        $query = Aset::query();
+        $query = Aset::with('kategori');
 
-    if ($kondisiFilter) {
-        if ($kondisiFilter !== 'all') {
-            $query->where('kondisi', $kondisiFilter);
+        if ($kondisiFilter) {
+            if ($kondisiFilter !== 'all') {
+                $query->where('kondisi', $kondisiFilter);
+            }
         }
+        $dataAset = $query->simplePaginate(10); 
+        $data['dataaset'] = $dataAset;
+        $data['kondisiFilter'] = $kondisiFilter; 
+        
+        return view('aset.index', $data);
     }
-    $dataAset = $query->simplePaginate(10); 
-    $data['dataaset'] = $dataAset;
-    $data['kondisiFilter'] = $kondisiFilter; 
-    
-    return view('aset.index', $data);
-}
 
     /**
      * Show the form for creating a new resource.

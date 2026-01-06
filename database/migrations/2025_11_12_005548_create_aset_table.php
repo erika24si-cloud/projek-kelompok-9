@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('aset', function (Blueprint $table) {
             $table->increments('aset_id');
             $table->foreignId('kategori_id')
-                ->constrained('kategoriAset', 'kategori_id') 
+                ->constrained('kategori_aset', 'kategori_id') 
                 ->onDelete('cascade');
             $table->string('kode_aset')->unique();
             $table->string('nama_aset', 100);
