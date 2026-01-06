@@ -14,7 +14,7 @@ class Createwarga extends Seeder
      */
     public function run(): void
     {
-        $faker = \Faker\Factory::create();
+        $faker = Faker::create('id_ID'); 
 
         for ($i = 1; $i <= 7; $i++) {
             DB::table('warga')->insert([
