@@ -140,7 +140,6 @@
                         </div>
                     </form>
 
-                    {{-- Form Tersembunyi untuk Aksi Hapus Foto Saja --}}
                     @if($users->profile)
                         <form id="form-hapus-foto" action="{{ route('user.hapus-foto', $users->id) }}" method="POST" style="display: none;">
                             @csrf
