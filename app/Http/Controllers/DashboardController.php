@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Aset;
+use App\Models\aset;
 use App\Models\kategoriAset;
 use App\Models\mutasiAset;
 use App\Models\pemeliharaanAset;
